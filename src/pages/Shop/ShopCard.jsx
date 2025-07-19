@@ -50,18 +50,19 @@ const ShopCard = memo(({ el }) => {
 
   return (
     <li className="shop-list__item" key={id}>
-     
 
+
+      <div className="shop-list__item-image">
       <Link to={`/shop/product/${id}`}>
         <div
-          style={{
-            position: 'relative',
-            display: 'inline-block',
-          }}
+          // style={{
+          //   position: 'relative',
+          //   display: 'inline-block',
+          // }}
         >
           <LazyLoadImage
             effect="blur"
-            className="shop-list__item-image"
+            // className="shop-list__item-image"
             src={url}
             alt={title}
           />
@@ -69,23 +70,26 @@ const ShopCard = memo(({ el }) => {
               <div className="shop-list__item-preview" style={{ color:'black'}}>Швидкий перегляд</div>
         </div>
       </Link>
+      </div>
 
-      <h1 className="shop-list__item-title">{title}</h1>
+       <div className="shop-list__item-body">
+       <h1 className="shop-list__item-title">{title}</h1>
 
-      {!discount ? (
-  <span className="shop-list__item-price">
-    {Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
-  </span>
+{!discount ? (
+<span className="shop-list__item-price">
+{Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
+</span>
 ) : (
-  <>
-    <span className="shop-list__item-price old-price">
-      {Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
-    </span>
-    <span className="shop-list__item-priceSale">
-      {Math.ceil(calculateDiscountedPrice(price, discount) * 47 / 4).toLocaleString('uk-UA')} грн./шт
-    </span>
-  </>
+<>
+<span className="shop-list__item-price old-price">
+{Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
+</span>
+<span className="shop-list__item-priceSale">
+{Math.ceil(calculateDiscountedPrice(price, discount) * 47 / 4).toLocaleString('uk-UA')} грн./шт
+</span>
+</>
 )}
+       </div>
     </li>
   )
 })
