@@ -74,7 +74,7 @@ const ShopCard = memo(({ el }) => {
 
       {!discount ? (
   <span className="shop-list__item-price">
-    {Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
+    {Math.ceil(price * 47 / 4).toLocaleString('uk-UA')}я не мию яйці грн./шт
   </span>
 ) : (
   <>
