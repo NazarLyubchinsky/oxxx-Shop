@@ -177,6 +177,7 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
 .shop-list__item {
     position: relative;
     transition: all 0.3s ease 0s;
+    // тут виправив анімку
     &:hover {
         .shop-list__item-preview {
             opacity: 1;
