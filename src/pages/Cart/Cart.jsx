@@ -9,7 +9,7 @@ import CartTotal from './CartTotal'
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart.cart)
-	console.log(cart)
+
 	return (
 		<Section className='page'>
 			<div className="container">

@@ -5,7 +5,12 @@ const ShopFilters = ({
   filterEtTo,
   handleEtFromChange,
   handleEtToChange,
-  handleClearEtFilter
+  handleClearEtFilter,
+  selectedDia,
+setSelectedDia,
+handleClearDia,
+toggleDia,
+baseItems
 }) => {
   const containerStyle = {
     color: 'black',
@@ -49,7 +54,11 @@ const ShopFilters = ({
     marginTop: '8px',
   };
 
-  return (
+const diaOptions = [...new Set(baseItems.map(item => item.dia))].filter(Boolean);
+
+
+
+return (
     <div style={containerStyle}>
       <div style={blockStyle}>
         <label style={labelStyle}>Сортувати за ціною:</label>
@@ -90,6 +99,31 @@ const ShopFilters = ({
       <button onClick={handleClearEtFilter} style={buttonStyle}>
         Скинути фільтр ET
       </button>
+
+     {/* dia */}
+
+     <div style={blockStyle}>
+  <label style={labelStyle}>DIA (ступиця):</label>
+  {diaOptions.map((diaValue) => (
+    <label key={diaValue}>
+      <input
+        type="checkbox"
+        value={diaValue}
+        checked={selectedDia.includes(diaValue)}
+        onChange={() => toggleDia(diaValue)}
+      />
+      {` ${diaValue}`}
+    </label>
+  ))}
+  <button
+    onClick={handleClearDia}
+    style={buttonStyle}
+  >
+    Скинути DIA
+  </button>
+</div>
+
+
     </div>
   );
 };

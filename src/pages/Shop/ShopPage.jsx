@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect } from 'react'
 import { useSearchParams, useParams } from 'react-router-dom'
 import Preloader from '../../components/Preloader/Preloader'
@@ -17,10 +18,14 @@ const ShopPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   // з URL беремо size і pcd
-  const { size: paramSize, pcd: paramPCD } = useParams()
+  const { size: paramSize, pcd: paramPCD,  } = useParams()
 
   const [filtered, setFiltered] = useState([])
   const [sortOrder, setSortOrder] = useState('asc')
+ const [selectedDia, setSelectedDia] = useState(() => {
+  const urlDia = searchParams.get('dia');
+  return urlDia ? urlDia.split(',') : [];
+});
 
   // з URL беремо параметри ET
   const etFromParam = searchParams.get('etFrom') || ''
@@ -36,7 +41,7 @@ const ShopPage = () => {
   }, [etFromParam, etToParam])
 
   const baseItems = filtered.length ? filtered : items
-console.log(baseItems)
+
   // фільтрація по ET
   const filteredByEt = useMemo(() => {
     if (!filterEtFrom && !filterEtTo) return baseItems
@@ -53,12 +58,18 @@ console.log(baseItems)
     })
   }, [baseItems, filterEtFrom, filterEtTo])
 
+  // сортування dia
+ const filteredByDia = useMemo(() => {
+  if (selectedDia.length === 0) return filteredByEt;
+  return filteredByEt.filter(item => selectedDia.includes(item.dia));
+}, [filteredByEt, selectedDia]);
+
   // сортування по ціні
-  const sortedItems = useMemo(() => {
-    return [...filteredByEt].sort((a, b) => {
-      return sortOrder === 'asc' ? a.price - b.price : b.price - a.price
-    })
-  }, [filteredByEt, sortOrder])
+const sortedItems = useMemo(() => {
+  return [...filteredByDia].sort((a, b) => {
+    return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+  });
+}, [filteredByDia, sortOrder]);
 
   // зміни полів ET
   const handleEtFromChange = e => {
@@ -92,6 +103,35 @@ console.log(baseItems)
     setSearchParams(params)
   }
 
+  // удаляємо фільтрацію по ступиці
+  const handleClearDia = () => {
+   setSelectedDia([]); // очищаємо стан
+  const params = Object.fromEntries(searchParams.entries());
+  delete params.dia; // видаляємо з URL
+  setSearchParams(params);
+  }
+
+//  сортування діа 
+
+
+
+const toggleDia = (diaValue) => {
+  const updated = selectedDia.includes(diaValue)
+    ? selectedDia.filter(d => d !== diaValue)
+    : [...selectedDia, diaValue];
+
+  setSelectedDia(updated);
+
+  const params = Object.fromEntries(searchParams.entries());
+  if (updated.length) {
+    params.dia = updated.join(',');
+  } else {
+    delete params.dia;
+  }
+  setSearchParams(params);
+};
+
+  
   return (
     <Section className="shop-section page">
       <div className="container">
@@ -110,6 +150,12 @@ console.log(baseItems)
               handleEtFromChange={handleEtFromChange}
               handleEtToChange={handleEtToChange}
               handleClearEtFilter={handleClearEtFilter}
+              selectedDia={selectedDia}
+setSelectedDia={setSelectedDia}
+baseItems={baseItems}
+handleClearDia={handleClearDia}
+
+toggleDia={toggleDia}
             />
 
            <div>
