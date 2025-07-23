@@ -5,9 +5,31 @@ import { MENU } from '../../utils/constants'
 // components
 import Icon from '../Icon/Icon'
 import Logo from '../Logo/Logo'
+import ShopFilters from '../../pages/Shop/ShopFilters'
+import { useShopFilters } from '../../pages/Shop/useShopFilters'
+import { useShopItems } from '../../hooks/useShopitems'
 
 const Hamburger = () => {
 	const [isOpen, setIsOpen] = useState(false)
+  const { items = [] } = useShopItems()
+
+	 const {
+		sortOrder,
+		setSortOrder,
+		filterEtFrom,
+		filterEtTo,
+		handleEtFromChange,
+		handleEtToChange,
+		handleClearEtFilter,
+		selectedDia,
+		setSelectedDia,
+		baseItems,
+		handleClearDia,
+		toggleDia,
+		
+		
+		
+	  } = useShopFilters(items)
 
 	const toggleMenu = () => {
 		setIsOpen((prev) => !prev)
@@ -38,11 +60,25 @@ const Hamburger = () => {
 						</li>
 					))}
 				</ul>
-
+ <ShopFilters isBurgerAndShopFilter='true'
+              sortOrder={sortOrder}
+              setSortOrder={setSortOrder}
+              filterEtFrom={filterEtFrom}
+              filterEtTo={filterEtTo}
+              handleEtFromChange={handleEtFromChange}
+              handleEtToChange={handleEtToChange}
+              handleClearEtFilter={handleClearEtFilter}
+              selectedDia={selectedDia}
+              setSelectedDia={setSelectedDia}
+              baseItems={baseItems}
+              handleClearDia={handleClearDia}
+              toggleDia={toggleDia}
+            />
 				<div className="menu-mobile__button" onClick={toggleMenu}>
 					<Icon name="round-close" />
 				</div>
 			</nav>
+			
 		</div>
 	)
 }
