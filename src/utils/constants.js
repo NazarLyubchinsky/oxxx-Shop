@@ -2,7 +2,7 @@ export const MAIN_URL = `https://graphql.contentful.com/content/v1/spaces/${proc
 
 export const MENU = [
 	{
-		name: "Concerts",
+		name: "Шини ЛІТО",
 		link: "tour",
 	},
 	// {
@@ -10,11 +10,11 @@ export const MENU = [
 	// 	link: "tracks",
 	// }, 
 	{
-		name: "News",
+		name: "Шини ЗИМА",
 		link: "news",
 	},
 	{
-		name: "SHOP",
+		name: "Каталог дисків",
 		link: "shop",
 	},
 ];
