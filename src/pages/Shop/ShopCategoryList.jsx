@@ -71,7 +71,7 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD }) 
              <button
         onClick={() => navigate('/shop')}
          className={`shop-list__category-item`}
-          //  style={{ padding: '1rem 2.0625rem' }}
+          
       >
         Змінити розмір
       </button>

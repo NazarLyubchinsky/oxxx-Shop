@@ -158,7 +158,7 @@ handleClearDia={handleClearDia}
 toggleDia={toggleDia}
             />
 
-           <div>
+           <div className='shop-block_content'>
              <ShopCategoryList
               filtered={filtered}
               setFiltered={setFiltered}

@@ -35,6 +35,9 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 2px;
             position: relative;
         }
+        &_content{
+            width: 100%;
+        }
     }
     &-list {
         gap: 1%;
