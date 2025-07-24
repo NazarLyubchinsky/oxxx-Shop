@@ -1,5 +1,3 @@
-import React from 'react'
-import { calculateDiscountedPrice } from '../../utils/common'
 import PriceBlock from '../PriceBlock/PriceBlock'
 
 const ProductTitle = ({ product }) => {

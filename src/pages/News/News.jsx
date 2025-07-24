@@ -64,7 +64,6 @@ const News = () => {
 							
 						}}
 					>
-						{/* {items.map(({ title, sys: { id }, cover: { url } }, i) => ( */}
 						{items.map(({ title, sys: { id } }, i) => (
 							<SwiperSlide key={id}
 							>
