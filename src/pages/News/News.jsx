@@ -64,7 +64,8 @@ const News = () => {
 							
 						}}
 					>
-						{items.map(({ title, sys: { id }, cover: { url } }, i) => (
+						{/* {items.map(({ title, sys: { id }, cover: { url } }, i) => ( */}
+						{items.map(({ title, sys: { id } }, i) => (
 							<SwiperSlide key={id}
 							>
 								<ScrollAnimation
@@ -74,7 +75,7 @@ const News = () => {
 								>
 									<Link className="news-item" to={`/news/${id}`}>
 										<div className="news-item__img">
-											<img src={url} alt={title} />
+											{/* <img src={url} alt={title} /> */}
 										</div>
 										<h3 className="news-item__title">{title}</h3>
 									</Link>

@@ -25,13 +25,14 @@ const Trackspage = () => {
 								{items.map(
 									(track) => {
 
-										const { sys: { id }, title, cover, date, description } = track;
+										const { sys: { id }, title,  date, description } = track;
+										// const { sys: { id }, title, cover, date, description } = track;
 										const iconName = playing && id === currentTrack?.sys.id ? 'pause' : 'play'
 
 										return (
 											<li key={id} className="tracks-list__item">
 												<div className='tracks-list__item-image'>
-													<img src={cover.url} alt={title} />
+													{/* <img src={cover.url} alt={title} /> */}
 												</div>
 
 												<div className="tracks-list__item-info">

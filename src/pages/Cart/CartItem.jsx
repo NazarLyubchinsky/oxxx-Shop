@@ -6,7 +6,8 @@ import { calculateDiscountedPrice } from '../../utils/common'
 function CartItem({ item }) {
 	const dispatch = useDispatch()
 
-	const { id, url, title, price, quantity = 0, discount, category, color, size } = item
+	// const { id, url, title, price, quantity = 0, discount, category, color, size } = item
+	const { id, url, title, price, quantity = 0, discount, color, size } = item
 
 	console.log(item)
 	return (
@@ -18,7 +19,7 @@ function CartItem({ item }) {
 				<p className="cartItem__title">{title}</p>
 				<p className="cartItem__category">
 					<span>Category: </span>
-					<span className='cartItem__category-category'>{category}</span>
+					{/* <span className='cartItem__category-category'>{category}</span> */}
 				</p>
 				<p className="cartItem__color">
 					<span>Color: </span>

@@ -38,6 +38,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { calculateDiscountedPrice } from '../../utils/common';
+import PriceBlock from '../../components/PriceBlock/PriceBlock';
 
 // Якщо логотип у /public, можна так:
 // const watermarkUrl = '/public/images/0-02-05-2ea2b8646444959a9191c5feec65ae5a543694a138425375e851378babbf180d_f52cd4cd5a29a098.jpg'
@@ -46,8 +47,10 @@ import { calculateDiscountedPrice } from '../../utils/common';
 // import watermarkUrl from '../../assets/watermark.png'
 
 const ShopCard = memo(({ el }) => {
-  const { sys: { id }, title, cover: { url }, price, discount } = el;
-
+  const { sys: { id }, title,  price, discount, imageCollection } = el;
+  // const { sys: { id }, title, cover: { url }, price, discount } = el;
+ const image = imageCollection?.items || [];
+ console.log(image)
   return (
     <li className="shop-list__item" key={id}>
 
@@ -55,17 +58,23 @@ const ShopCard = memo(({ el }) => {
       <div className="shop-list__item-image">
       <Link to={`/shop/product/${id}`}>
         <div
-          // style={{
-          //   position: 'relative',
-          //   display: 'inline-block',
-          // }}
         >
-          <LazyLoadImage
+          {/* <LazyLoadImage
             effect="blur"
             // className="shop-list__item-image"
-            src={url}
+            // src={url}
+            alt={title}
+          /> */}
+
+          { image.map((img, id) => (
+             <LazyLoadImage
+             key={id}
+            effect="blur"
+            className="shop-list__item-image"
+            src={img.url}
             alt={title}
           />
+           ))}
 
               <div className="shop-list__item-preview" style={{ color:'black'}}>Швидкий перегляд</div>
         </div>
@@ -75,7 +84,7 @@ const ShopCard = memo(({ el }) => {
        <div className="shop-list__item-body">
        <h1 className="shop-list__item-title">{title}</h1>
 
-{!discount ? (
+{/* {!discount ? (
 <span className="shop-list__item-price">
 {Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
 </span>
@@ -88,7 +97,9 @@ const ShopCard = memo(({ el }) => {
 {Math.ceil(calculateDiscountedPrice(price, discount) * 47 / 4).toLocaleString('uk-UA')} грн./шт
 </span>
 </>
-)}
+)} */}
+
+<PriceBlock price={price} discount={discount}/>
        </div>
     </li>
   )

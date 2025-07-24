@@ -30,9 +30,7 @@ export const trakItemCollectionQuery = `
 		  link {
 			url
 		  }
-		  cover {
-			url
-		  }
+		 
       }
     }
   }
@@ -47,9 +45,7 @@ export const newsItemCollectionQuery = `
         }
 		  title
 		  date
-		  cover {
-			url
-		  }
+		 
       }
     }
   }
@@ -63,9 +59,7 @@ export const newsItemQuery = (id) => `
     }
 	 title
 	 date
-	 cover {
-      url
-    }
+	
 	 description {
 		json
 	 }
@@ -83,11 +77,8 @@ export const shopItemCollectionQuery = `
 		  }
 		  price
 		 title
-		  cover { 
-			url
-			}
+		 
 			discount
-			category
       size
     pcd
     dia
@@ -110,11 +101,8 @@ export const shopItemQuery = (id) => `
     }
 	 price
 	 title
-	  cover { 
-		url
-		}
+	 
 		discount
-		category
     size
     pcd
     dia

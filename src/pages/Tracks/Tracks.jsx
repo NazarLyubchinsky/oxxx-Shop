@@ -30,7 +30,8 @@ const Tracks = () => {
 							.filter((_, i) => i < 3)
 							.map((track) => {
 								const {
-									cover,
+									// cover,
+									
 									title,
 									sys: { id },
 									date,
@@ -48,7 +49,7 @@ const Tracks = () => {
 
 										>
 											<div className="track-image" onClick={() => handleTrackClick(track)}>
-												<img src={cover.url} alt={title} />
+												{/* <img src={cover.url} alt={title} /> */}
 												{!!playing && currentTrack.sys.id === id && (
 													<Icon name="pause" />
 												)}

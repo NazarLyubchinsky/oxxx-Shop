@@ -16,6 +16,9 @@ import { useShopFilters } from './useShopFilters'
 const ShopPage = () => {
   const { items = [], isLoading } = useShopItems()
   const { size: paramSize, pcd: paramPCD } = useParams()
+console.log(items.imageCollection?.items || [])
+
+// const Images = product.imageCollection?.items || [];
 
    const {
     sortOrder,

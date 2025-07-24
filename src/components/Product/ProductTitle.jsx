@@ -1,17 +1,21 @@
 import React from 'react'
 import { calculateDiscountedPrice } from '../../utils/common'
+import PriceBlock from '../PriceBlock/PriceBlock'
 
 const ProductTitle = ({ product }) => {
-	const { title, category, discount, price } = product
+	// const { title, category, discount, price } = product
+	const { title,  discount, price } = product
+
+	console.log(title)
 	return (
 		<>
 			<h2 className="product__title">
 				{title}
 			</h2>
 			<p className="product__category">
-				{category}
+				{/* {category} */}
 			</p>
-			{
+			{/* {
 				discount ? (
 					<div className="product__price">
 						<p className='price__sale' style={{ textDecoration: 'line-through', fontFamily: 'Raleway' }}>
@@ -31,7 +35,8 @@ const ProductTitle = ({ product }) => {
 						</p>
 					</div>
 				)
-			}
+			} */}
+			<PriceBlock price={price} discount={discount}/>
 		</>
 	)
 }

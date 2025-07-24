@@ -20,12 +20,13 @@ const NewsPage = () => {
 					<Preloader />
 				) : (
 					<div className="news-list">
-						{items.map(({ title, date, cover: { url }, sys: { id } }) => {
+						{/* {items.map(({ title, date, cover: { url }, sys: { id } }) => { */}
+						{items.map(({ title, date,  sys: { id } }) => {
 							return (
 								<div className="news-list__item" key={id}>
 									<div
 										className="news-list__item-img"
-										style={{ backgroundImage: `url(${url})` }}
+										// style={{ backgroundImage: `url(${url})` }}
 									/>
 									<div className="news-list__item-info">
 										<p className="news-list__item-date">
