@@ -69,6 +69,8 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
           
             @media only screen and (max-width: 776px) {
                 padding: 2.5rem 1.75rem;
+                    max-width: 100%;
+    min-width: 100%;
             }
             &-image {
                 text-align: center;
@@ -152,6 +154,9 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             align-items: center;
             margin: 3.125rem 0 2.75rem;
             flex-wrap: wrap;
+                @media only screen and (max-width: 776px) {
+              margin: 1.125rem 0 1.75rem;
+            }
             &-item {
                 padding: 1rem 4.0625rem;
                 border: 1px solid;
@@ -169,6 +174,7 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                     background: var(--action);
                     color: var(--light);
                 }
+              
             }
             .active {
                 background: var(--action);

@@ -1,11 +1,14 @@
-// hooks/useShopFilters.js
+
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 export const useShopFilters = (items = []) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [sortOrder, setSortOrder] = useState('asc')
+const [sortOrder, setSortOrder] = useState(() => {
+  const urlSort = searchParams.get('sort');
+  return urlSort === 'asc' || urlSort === 'desc' ? urlSort : 'desc';
+});
 
   const [filtered, setFiltered] = useState([])
   const [selectedDia, setSelectedDia] = useState(() => {
@@ -90,6 +93,8 @@ export const useShopFilters = (items = []) => {
       ? selectedDia.filter(d => d !== diaValue)
       : [...selectedDia, diaValue];
 
+      
+
     setSelectedDia(updated);
     const params = Object.fromEntries(searchParams.entries());
     if (updated.length) {
@@ -100,9 +105,20 @@ export const useShopFilters = (items = []) => {
     setSearchParams(params);
   };
 
+
+  const updateSortOrder = (value) => {
+  setSortOrder(value);
+  const params = Object.fromEntries(searchParams.entries());
+  if (value) {
+    params.sort = value;
+  } else {
+    delete params.sort;
+  }
+  setSearchParams(params);
+};
   return {
     sortOrder,
-    setSortOrder,
+    setSortOrder: updateSortOrder,
     filterEtFrom,
     filterEtTo,
     handleEtFromChange,

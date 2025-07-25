@@ -28,15 +28,14 @@ const ShopCard = memo(({ el }) => {
         >
          
 
-          { image.map((img, id) => (
-             <LazyLoadImage
-             key={id}
-            effect="blur"
-            className="shop-list__item-image"
-            src={img.url}
-            alt={title}
-          />
-           ))}
+         {image[0] && (
+  <LazyLoadImage
+    effect="blur"
+    className="shop-list__item-image"
+    src={image[0].url}
+    alt={title}
+  />
+)}
 
               <div className="shop-list__item-preview" style={{ color:'black'}}>Швидкий перегляд</div>
         </div>

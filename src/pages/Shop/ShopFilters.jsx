@@ -22,7 +22,7 @@ const diaOptions = [...new Set(baseItems.map(item => item.dia))].filter(Boolean)
 
 
 return (
-   <div className={`shop-filters__container ${isBurgerAndShopFilter ? 'shopAndHamburger' : 'shopAndHamburgerNone'}`}>
+   <div className={`shop-filters__container ${isBurgerAndShopFilter === 'false' ? 'shopAndHamburger' : 'shopAndHamburgerNone'}`}>
      {/* <div className={`shop-filters__container`} > */}
       <div className="shop-filters__block">
         <label className="shop-filters__label">Сортувати за ціною:</label>
