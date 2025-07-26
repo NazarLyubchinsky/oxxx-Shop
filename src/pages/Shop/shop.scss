@@ -35,21 +35,23 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 2px;
             position: relative;
         }
-        &_content{
+        &_content {
             width: 100%;
         }
     }
     &-list {
         gap: 1%;
+        @media only screen and (max-width: 480px) {
+            gap: 0%;
+        }
         margin-top: 2.5rem;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
- 
         &__item {
             position: relative;
             padding: 10px;
-            max-width: 32%;
+            flex: 1 1 32%;
             margin-top: 10px;
             box-shadow: 0 0 0 10px #F2F2F2 inset;
             transition: box-shadow $time $easing;
@@ -64,18 +66,15 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 @include shadow-dark;
             }
             @include shadow;
-            
-
-          
-            @media only screen and (max-width: 776px) {
-                padding: 2.5rem 1.75rem;
-                    max-width: 100%;
-    min-width: 100%;
+            @media only screen and (max-width: 768px) {
+                flex: 1 1 30%;
+            }
+            @media only screen and (max-width: 480px) {
+                flex: 1 1 45%;
             }
             &-image {
                 text-align: center;
                 width: 100%;
-                // height: 100px;
                 max-width: none;
                 position: relative;
             }
@@ -87,6 +86,12 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 max-width: 100%;
                 object-fit: cover;
                 height: 300px;
+                @media only screen and (max-width: 768px) {
+                    height: 200px;
+                }
+                @media only screen and (max-width: 480px) {
+                    height: 140px;
+                }
             }
             &-title {
                 font-size: 1.2rem;
@@ -96,6 +101,9 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 font-weight: 400;
                 @media only screen and (max-width: 776px) {
                     font-size: 1rem;
+                }
+                @media only screen and (max-width: 480px) {
+                    font-size: .7rem;
                 }
             }
             &-price {
@@ -108,12 +116,24 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 line-height: 15px;
                 text-transform: lowercase !important;
                 margin-bottom: 10px;
+                @media only screen and (max-width: 776px) {
+                    font-size: 16px;
+                }
+                @media only screen and (max-width: 480px) {
+                    font-size: 14px;
+                }
                 &.old-price {
                     text-decoration: line-through;
                     color: #888;
                     font-size: 16px;
                     margin-right: 8px;
                     margin-bottom: 5px;
+                    @media only screen and (max-width: 776px) {
+                        font-size: 15px;
+                    }
+                    @media only screen and (max-width: 480px) {
+                        font-size: 14px;
+                    }
                 }
             }
             &-priceSale {
@@ -125,6 +145,12 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 font-weight: bold;
                 padding: 6px 10px;
                 border-radius: 4px;
+                @media only screen and (max-width: 776px) {
+                    font-size: 16px;
+                }
+                @media only screen and (max-width: 480px) {
+                    font-size: 14px;
+                }
             }
             &-description {
                 color: var(--dark);
@@ -154,8 +180,8 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             align-items: center;
             margin: 3.125rem 0 2.75rem;
             flex-wrap: wrap;
-                @media only screen and (max-width: 776px) {
-              margin: 1.125rem 0 1.75rem;
+            @media only screen and (max-width: 776px) {
+                margin: 1.125rem 0 1.75rem;
             }
             &-item {
                 padding: 1rem 4.0625rem;
@@ -174,7 +200,6 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                     background: var(--action);
                     color: var(--light);
                 }
-              
             }
             .active {
                 background: var(--action);

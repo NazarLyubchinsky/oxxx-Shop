@@ -31,7 +31,6 @@ const Header = () => {
 	}
 	return (
 		<section className='header'>
-			<div className="container">
 				<header>
 					<div style={{
 						display: 'flex', gap: ' 10px', alignItems: 'center'
@@ -61,7 +60,6 @@ const Header = () => {
 					</Link>
 
 				</header>
-			</div >
 		</section >
 	)
 }
