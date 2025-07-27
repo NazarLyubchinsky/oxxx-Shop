@@ -183,8 +183,12 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             @media only screen and (max-width: 776px) {
                 margin: 1.125rem 0 1.75rem;
             }
+            &-row {
+                display: flex;
+                gap: 10px;
+            }
             &-item {
-                padding: 1rem 4.0625rem;
+                padding: 1rem 1.0625rem;
                 border: 1px solid;
                 text-align: center;
                 border-color: var(--black-color);
@@ -196,6 +200,8 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 transition: all 0.3s ease-in;
                 cursor: pointer;
                 border: 1px solid #f2f2f2;
+                background: #cecece;
+                border-radius: 8px;
                 &:hover {
                     background: var(--action);
                     color: var(--light);

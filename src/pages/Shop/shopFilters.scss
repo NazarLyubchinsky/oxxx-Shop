@@ -1,24 +1,51 @@
+.shop-filters__container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.shop-filters__container::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.shop-filters__container::-webkit-scrollbar-thumb {
+    background-color: var(--action);
+    border: 1px solid #0c66b9;
+    border-radius: 14px;
+    max-width: 1%;
+}
+
 .shop-filters {
     &__container {
+        position: sticky;
+        top: 3.8rem;
+        left: 0;
         color: black;
         padding: 16px;
-        background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 10px;
-        max-width: 300px;
+        max-width: 320px;
+        width: 320px;
+        height: 90vh;
         display: flex;
         flex-direction: column;
         gap: 16px;
         font-family: sans-serif;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding-bottom: 50px;
     }
-    &__block {
+    &__body {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 18px;
     }
+    &__block {}
     &__label {
         font-weight: 500;
         font-size: 14px;
+        display: block;
+        margin-bottom: 10px;
     }
     &__input {
         padding: 6px 10px;
@@ -39,6 +66,7 @@
         cursor: pointer;
         font-size: 14px;
         margin-top: 8px;
+        color: #000;
     }
     &__checkbox-label {
         font-size: 14px;
@@ -70,6 +98,7 @@
         &__button {
             background: var(--action);
             border: solid 1px #e24c1e;
+            color: #fff;
         }
         &__checkbox-label {}
     }

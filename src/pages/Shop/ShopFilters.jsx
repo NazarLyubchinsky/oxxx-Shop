@@ -24,7 +24,8 @@ const diaOptions = [...new Set(baseItems.map(item => item.dia))].filter(Boolean)
 return (
    <div className={`shop-filters__container ${isBurgerAndShopFilter === 'false' ? 'shopAndHamburger' : 'shopAndHamburgerNone'}`}>
      {/* <div className={`shop-filters__container`} > */}
-      <div className="shop-filters__block">
+     <div className="shop-filters__body">
+     <div className="shop-filters__block">
         <label className="shop-filters__label">Сортувати за ціною:</label>
         <select
           value={sortOrder}
@@ -35,7 +36,6 @@ return (
           <option value="desc">Від дорожчих до дешевших</option>
         </select>
       </div>
-
       <div className="shop-filters__block">
         <label className="shop-filters__label">Виліт ET від:</label>
         <input
@@ -47,7 +47,6 @@ return (
           min={0}
         />
       </div>
-
       <div className="shop-filters__block">
         <label className="shop-filters__label">Виліт ET до:</label>
         <input
@@ -84,6 +83,8 @@ return (
           Скинути DIA
         </button>
       </div>
+      </div>
+       
     </div>
   );
 };

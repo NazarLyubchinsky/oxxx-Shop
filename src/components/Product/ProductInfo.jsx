@@ -182,8 +182,7 @@ const ProductInfo = ({ product }) => {
 						{
 							colors.map((item) => (
 								<li key={item} style={{
-									background: `${color === item ? 'grey' : 'transparent'}`,
-									color: `${color === item ? 'white' : 'white'} `
+									background: `${color === item ? 'grey' : 'transparent'}`
 								}}
 									onClick={() => {
 										if (item) {
@@ -205,8 +204,7 @@ const ProductInfo = ({ product }) => {
 						{
 							sizes.map((item) => (
 								<li key={item} style={{
-									background: `${size === item ? 'grey' : 'transparent'}`,
-									color: `${size === item ? 'white' : 'white'} `
+									background: `${size === item ? 'grey' : 'transparent'}`
 								}}
 									onClick={() => {
 										if (item) {
