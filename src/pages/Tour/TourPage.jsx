@@ -1,30 +1,30 @@
-import React, { useCallback, useEffect, useState } from 'react'
+// import React, { useCallback, useEffect, useState } from 'react'
 
-import { useTourItems } from '../../hooks/useTourItems';
+// import { useTourItems } from '../../hooks/useTourItems';
 
-import Preloader from '../../components/Preloader/Preloader';
+// import Preloader from '../../components/Preloader/Preloader';
 import PageTitle from '../../components/Title/PageTitle';
-import TourItem from './TourItem';
+// import TourItem from './TourItem';
 
 const TourPage = () => {
-	const { items = [], isLoading } = useTourItems();
+	// const { items = [], isLoading } = useTourItems();
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const tabs = [...new Set(items.map(({ country }) => country))]
+	// // eslint-disable-next-line react-hooks/exhaustive-deps
+	// const tabs = [...new Set(items.map(({ country }) => country))]
 
-	const [activeTab, setActiveTab] = useState(null)
-	const [filtered, setFiltered] = useState([])
+	// const [activeTab, setActiveTab] = useState(null)
+	// const [filtered, setFiltered] = useState([])
 
-	const toggletab = useCallback((tab) => {
-		setActiveTab(tab)
-		setFiltered(items.filter(({ country }) => country === tab))
-	}, [items])
+	// const toggletab = useCallback((tab) => {
+	// 	setActiveTab(tab)
+	// 	setFiltered(items.filter(({ country }) => country === tab))
+	// }, [items])
 
 
-	useEffect(() => {
-		if (tabs.length && !activeTab) toggletab(tabs[0])
+	// useEffect(() => {
+	// 	if (tabs.length && !activeTab) toggletab(tabs[0])
 
-	}, [tabs, toggletab, activeTab])
+	// }, [tabs, toggletab, activeTab])
 
 
 	return (
@@ -32,7 +32,7 @@ const TourPage = () => {
 			<div className="container">
 				<PageTitle text='Concerts' />
 
-				{isLoading ? <Preloader /> : (
+				{/* {isLoading ? <Preloader /> : (
 					<>
 						<ul className="tour-tabs">
 							{tabs.map((tab, id) => (
@@ -47,7 +47,7 @@ const TourPage = () => {
 							))}
 						</ul>
 					</>
-				)}
+				)} */}
 			</div>
 		</section>
 	)
