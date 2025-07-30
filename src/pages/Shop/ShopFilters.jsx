@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 
 const ShopFilters = ({
   sortOrder,
@@ -17,7 +18,10 @@ baseItems
 
   
 
-const diaOptions = [...new Set(baseItems.map(item => item.dia))].filter(Boolean);
+const diaOptions = useMemo(() => (
+  [...new Set(baseItems.map(item => item.dia))].filter(Boolean)
+), [baseItems]);
+
 
 
 

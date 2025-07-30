@@ -70,6 +70,14 @@ const shopItemSlice = createSlice({
 			})
 
 	},
+	reducers:{
+		resetItem(state) {
+    state.item = null;
+  },
+		 setItemFromList(state, { payload }) {
+    state.item = payload;
+  },
+	}
 });
 
 export default shopItemSlice.reducer;
