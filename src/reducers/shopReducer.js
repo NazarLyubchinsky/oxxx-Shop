@@ -19,7 +19,7 @@ export const getShopsItems = createAsyncThunk(
     const state = thunkAPI.getState();
     const { lastFetch, items } = state.shop;
     const now = Date.now();
-    const cacheDuration = 5 * 60 * 1000; // 5 хвилин
+    const cacheDuration = 10 * 60 * 1000; // 10 хвилин
 
     if (items.length > 0 && lastFetch && (now - lastFetch) < cacheDuration) {
       return items;
