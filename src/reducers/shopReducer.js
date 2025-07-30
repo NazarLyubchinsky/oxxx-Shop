@@ -6,25 +6,32 @@ import { request } from "../utils/common";
 import { shopItemCollectionQuery, shopItemQuery } from "../utils/queries";
 
 const initialState = {
-	items: [],
-	item: null,
-	isLoading: false,
+  items: [],
+  item: null,
+  isLoading: false,
+  lastFetch: null,
 };
 
 // feth request query
 export const getShopsItems = createAsyncThunk(
-	"shopItem/getShopsItems",
-	async (_, thunkAPI) => {
-		try {
-			const data = await request(shopItemCollectionQuery);
+  "shopItem/getShopsItems",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const { lastFetch, items } = state.shop;
+    const now = Date.now();
+    const cacheDuration = 5 * 60 * 1000; // 5 хвилин
 
-			const { items } = data.shopItemCollection;
+    if (items.length > 0 && lastFetch && (now - lastFetch) < cacheDuration) {
+      return items;
+    }
 
-			return items;
-		} catch (err) {
-			return thunkAPI.rejectWithValue(err);
-		}
-	}
+    try {
+      const data = await request(shopItemCollectionQuery);
+      return data.shopItemCollection.items;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err);
+    }
+  }
 );
 
 // item
@@ -53,6 +60,7 @@ const shopItemSlice = createSlice({
 			.addCase(getShopsItems.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
 				state.items = payload;
+        state.lastFetch = Date.now();
 			})
 			.addCase(getShopsItems.rejected, (state) => {
 				state.isLoading = false;

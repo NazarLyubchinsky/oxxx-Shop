@@ -17,13 +17,12 @@ import PriceBlock from '../../components/PriceBlock/PriceBlock';
 const ShopCard = memo(({ el }) => {
   const { sys: { id }, title,  price, discount, imageCollection } = el;
  const image = imageCollection?.items || [];
- console.log(image)
   return (
     <li className="shop-list__item" key={id}>
 
 
       <div className="shop-list__item-image">
-      <Link to={`/shop/product/${id}`}>
+      <Link to={`/shop/product/${id}`} state={{ item: el }}>
         <div
         >
          
