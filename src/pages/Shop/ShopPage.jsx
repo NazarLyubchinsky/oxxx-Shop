@@ -18,7 +18,7 @@ const ShopPage = () => {
   const { size: paramSize, pcd: paramPCD } = useParams()
 console.log(items.imageCollection?.items || [])
 
-
+console.log(items)
 
 // const Images = product.imageCollection?.items || [];
 

@@ -68,29 +68,28 @@ export const newsItemQuery = (id) => `
 `;
 
 export const shopItemCollectionQuery = `
-{
-	shopItemCollection {
-  
-		items {
-		  sys {
-			 id
-		  }
-		  price
-		 title
-		 
-			discount
-      size
-    pcd
-    dia
-    imageCollection {
+  query GetShopItems($limit: Int, $skip: Int) {
+    shopItemCollection(limit: $limit, skip: $skip) {
+      total
       items {
-        url
+        sys {
+          id
+        }
+        price
         title
+        discount
+        size
+        pcd
+        dia
+        imageCollection {
+          items {
+            url
+            title
+          }
+        }
       }
     }
-		}
-	 }
-}
+  }
 `;
 
 export const shopItemQuery = (id) => `

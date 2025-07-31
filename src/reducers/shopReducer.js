@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // utils
 import { request } from "../utils/common";
-import { shopItemCollectionQuery, shopItemQuery } from "../utils/queries";
+// import { shopItemCollectionQuery, shopItemQuery } from "../utils/queries";
+import {  shopItemQuery } from "../utils/queries";
+import { fetchAllShopItems } from "../utils/fetchAllShopItems";
 
 const initialState = {
   items: [],
@@ -16,25 +18,24 @@ const initialState = {
 export const getShopsItems = createAsyncThunk(
   "shopItem/getShopsItems",
   async (_, thunkAPI) => {
-	
     const state = thunkAPI.getState();
     const { lastFetch, items } = state.shop;
     const now = Date.now();
-    const cacheDuration = 1 * 60 * 1000; // 100 хвилин
+    const cacheDuration = 150 * 60 * 1000; // 100 хвилин
 
-    if (items.length > 0 && lastFetch && (now - lastFetch) < cacheDuration) {
+    if (items.length > 0 && lastFetch && now - lastFetch < cacheDuration) {
       return items;
     }
 
     try {
-
-      const data = await request(shopItemCollectionQuery);
-      return data.shopItemCollection.items;
+      const allItems = await fetchAllShopItems();
+      return allItems;
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
   }
 );
+
 
 // item
 export const getShopItem = createAsyncThunk(
