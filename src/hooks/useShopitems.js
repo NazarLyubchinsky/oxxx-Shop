@@ -8,11 +8,11 @@ const CACHE_KEY = 'shopItemsCache';
 
 export const useShopItems = () => {
   const dispatch = useDispatch();
-  const { items = [], isLoading } = useSelector(({ shop }) => shop);
+  const { items = [], isLoading} = useSelector(({ shop }) => shop);
 
   useEffect(() => {
     const cached = localStorage.getItem(CACHE_KEY);
-
+ 
     if (cached && !items.length) {
       const parsed = JSON.parse(cached);
       dispatch({ type: 'shopItem/getShopsItems/fulfilled', payload: parsed });

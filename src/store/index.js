@@ -56,7 +56,7 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 const shopPersistConfig = {
   key: 'shop',
   storage,
-  whitelist: ['items'], // кешуємо лише items
+ whitelist: ['items', 'lastFetch']
 };
 
 const persistedShopReducer = persistReducer(shopPersistConfig, shopReducer);

@@ -16,16 +16,18 @@ const initialState = {
 export const getShopsItems = createAsyncThunk(
   "shopItem/getShopsItems",
   async (_, thunkAPI) => {
+	
     const state = thunkAPI.getState();
     const { lastFetch, items } = state.shop;
     const now = Date.now();
-    const cacheDuration = 10 * 60 * 1000; // 10 хвилин
+    const cacheDuration = 100 * 60 * 1000; // 100 хвилин
 
     if (items.length > 0 && lastFetch && (now - lastFetch) < cacheDuration) {
       return items;
     }
 
     try {
+
       const data = await request(shopItemCollectionQuery);
       return data.shopItemCollection.items;
     } catch (err) {
