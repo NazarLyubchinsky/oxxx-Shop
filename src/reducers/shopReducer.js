@@ -19,21 +19,8 @@ const initialState = {
 export const getShopsItems = createAsyncThunk(
   "shopItem/getShopsItems",
   async (_, thunkAPI) => {
-    const { shop } = thunkAPI.getState();
-
-    const now = Date.now();
-    const cacheDuration = 1000 * 60 * 60 * 3;
-
-    if (shop.isFetching) {
-      return thunkAPI.rejectWithValue("Already fetching");
-    }
-
-    const isCacheValid = shop.items.length && shop.lastFetch && now - shop.lastFetch < cacheDuration;
-
-    if (isCacheValid) {
-      return thunkAPI.rejectWithValue("Using cached data");
-    }
-
+    // const { shop } = thunkAPI.getState();
+  
     try {
       const allItems = await fetchAllShopItems();
       return allItems;
@@ -64,24 +51,23 @@ const shopItemSlice = createSlice({
 
 	extraReducers: (builder) => {
 		builder
-			.addCase(getShopsItems.pending, (state) => {
-				state.isLoading = true;
-// !
-				state.isFetching = true;
-			})
+		.addCase(getShopsItems.pending, (state) => {
+  console.log("getShopsItems pending");
+  state.isLoading = true;
+  state.isFetching = true;
+})
 			.addCase(getShopsItems.fulfilled, (state, { payload }) => {
-				state.isLoading = false;
-// !
-				state.isFetching = false;
-
-				state.items = payload;
-        state.lastFetch = Date.now();
-			})
-			.addCase(getShopsItems.rejected, (state) => {
-				state.isLoading = false;
-				// !
-				 state.isFetching = false;
-			})
+  console.log("Fulfilled payload length:", payload.length);
+  state.items = payload;
+  state.lastFetch = Date.now();
+  state.isLoading = false;
+  state.isFetching = false;
+})
+		.addCase(getShopsItems.rejected, (state, action) => {
+  console.log("getShopsItems rejected", action.error);
+  state.isLoading = false;
+  state.isFetching = false;
+})
 
 			.addCase(getShopItem.pending, (state) => {
 				state.isLoading = true;
@@ -104,5 +90,5 @@ const shopItemSlice = createSlice({
   },
 	}
 });
-
 export default shopItemSlice.reducer;
+
