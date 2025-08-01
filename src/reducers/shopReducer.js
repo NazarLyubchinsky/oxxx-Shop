@@ -3,7 +3,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // utils
 import { request } from "../utils/common";
-// import { shopItemCollectionQuery, shopItemQuery } from "../utils/queries";
 import {  shopItemQuery } from "../utils/queries";
 import { fetchAllShopItems } from "../utils/fetchAllShopItems";
 
@@ -12,19 +11,27 @@ const initialState = {
   item: null,
   isLoading: false,
   lastFetch: null,
+//   !
+  isFetching: false,
 };
 
-// feth request query
+
 export const getShopsItems = createAsyncThunk(
   "shopItem/getShopsItems",
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const { lastFetch, items } = state.shop;
-    const now = Date.now();
-    const cacheDuration = 150 * 60 * 1000; // 100 хвилин
+    const { shop } = thunkAPI.getState();
 
-    if (items.length > 0 && lastFetch && now - lastFetch < cacheDuration) {
-      return items;
+    const now = Date.now();
+    const cacheDuration = 1000 * 60 * 60 * 3;
+
+    if (shop.isFetching) {
+      return thunkAPI.rejectWithValue("Already fetching");
+    }
+
+    const isCacheValid = shop.items.length && shop.lastFetch && now - shop.lastFetch < cacheDuration;
+
+    if (isCacheValid) {
+      return thunkAPI.rejectWithValue("Using cached data");
     }
 
     try {
@@ -59,14 +66,21 @@ const shopItemSlice = createSlice({
 		builder
 			.addCase(getShopsItems.pending, (state) => {
 				state.isLoading = true;
+// !
+				state.isFetching = true;
 			})
 			.addCase(getShopsItems.fulfilled, (state, { payload }) => {
 				state.isLoading = false;
+// !
+				state.isFetching = false;
+
 				state.items = payload;
         state.lastFetch = Date.now();
 			})
 			.addCase(getShopsItems.rejected, (state) => {
 				state.isLoading = false;
+				// !
+				 state.isFetching = false;
 			})
 
 			.addCase(getShopItem.pending, (state) => {
