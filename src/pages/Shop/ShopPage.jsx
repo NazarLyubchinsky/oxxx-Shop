@@ -12,12 +12,13 @@ import ShopCard from './ShopCard'
 import ShopCategoryList from './ShopCategoryList'
 import ShopFilters from './ShopFilters'
 import { useShopFilters } from './useShopFilters'
+import { useState } from 'react'
 
 const ShopPage = () => {
   const { items = [], isLoading } = useShopItems()
   const { size: paramSize, pcd: paramPCD } = useParams()
 
-
+const [IsFilterOpenBurger, setIsFilterOpenBurger] = useState()
 
    const {
     sortOrder,
@@ -36,7 +37,7 @@ const ShopPage = () => {
     setFiltered,
     sortedItems
   } = useShopFilters(items)
-  
+  console.log(sortedItems)
   return (
     <Section className="shop-section page">
       <div className="container">
@@ -46,7 +47,10 @@ const ShopPage = () => {
           <Preloader />
         ) : (
           <div className='shop-block'>
-   <ShopFilters
+
+         
+
+ <ShopFilters
              isBurgerAndShopFilter='false'
               sortOrder={sortOrder}
               setSortOrder={setSortOrder}
@@ -60,7 +64,10 @@ const ShopPage = () => {
               baseItems={baseItems}
               handleClearDia={handleClearDia}
               toggleDia={toggleDia}
+
+             
             />
+  
 
            <div className='shop-block_content'>
              <ShopCategoryList
@@ -68,7 +75,12 @@ const ShopPage = () => {
               setFiltered={setFiltered}
               selectedSize={paramSize}
               selectedPCD={paramPCD}
+              setIsFilterOpenBurger={setIsFilterOpenBurger}
             />
+
+            {IsFilterOpenBurger && (
+              <div className='shop-block_content-panel'>wd</div>
+            )}
 
 
             <ul className="shop-list">

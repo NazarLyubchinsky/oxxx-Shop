@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShopItems } from '../../hooks/useShopitems';
 
-const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD }) => {
+const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, setIsFilterOpenBurger }) => {
   const { items = [] } = useShopItems();
   const navigate = useNavigate();
 
@@ -46,10 +46,16 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD }) 
 
   return (
     <div className='shop-list__category'>
+
+        <button className="btn-filter-toggle" style={{color: 'black', background: 'red'}} onClick={() => setIsFilterOpenBurger(true)}>
+  Фільтрація ssss
+</button>
      {!selectedSize && (
   <div style={{ marginBottom: '10px' }}>
  
     <div className='shop-list__category-row'>
+
+      
       {sizes.map((size, idx) => (
         <button
           key={idx}

@@ -12,7 +12,8 @@ const ShopFilters = ({
 isBurgerAndShopFilter,
 handleClearDia,
 toggleDia,
-baseItems
+baseItems,
+
 }) => {
  
 
@@ -29,7 +30,10 @@ return (
    <div className={`shop-filters__container ${isBurgerAndShopFilter === 'false' ? 'shopAndHamburger' : 'shopAndHamburgerNone'}`}>
      {/* <div className={`shop-filters__container`} > */}
      <div className="shop-filters__body">
+
+       
      <div className="shop-filters__block">
+        
         <label className="shop-filters__label">Сортувати за ціною:</label>
         <select
           value={sortOrder}

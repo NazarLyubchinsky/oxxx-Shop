@@ -37,6 +37,19 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
         }
         &_content {
             width: 100%;
+            &-panel{
+                  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 400px;
+  height: 100%;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  overflow-y: auto;
+            }
         }
     }
     &-list {
@@ -185,6 +198,7 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
             }
             &-row {
                 display: flex;
+                flex-wrap: wrap;
                 gap: 10px;
             }
             &-item {
@@ -206,6 +220,11 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                     background: var(--action);
                     color: var(--light);
                 }
+                @media only screen and (max-width: 768px) {
+                flex: 1;
+                min-width: 100px;
+                padding: 0.5rem 2.5rem;
+                }
             }
             .active {
                 background: var(--action);
@@ -215,17 +234,7 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .shop {
-        &-list {
-            &__category-item {
-                flex: 1;
-                min-width: 190px;
-                padding: 0.5rem 2.5rem;
-            }
-        }
-    }
-}
+
 
 // hover
 .shop-list__item {

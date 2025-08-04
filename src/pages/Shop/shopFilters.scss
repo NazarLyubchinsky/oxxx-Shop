@@ -34,6 +34,16 @@
         overflow-y: scroll;
         overflow-x: hidden;
         padding-bottom: 50px;
+        @media (max-width: 991.98px) {
+     margin: 0 auto;
+            background: #6fa4b34c;
+            color: #fff;
+            text-align: center;
+        }
+         @media (max-width: 450px) {
+            max-width: 280px;
+
+         }
     }
     &__body {
         display: flex;
@@ -85,21 +95,13 @@
 
 @media (max-width: 991.98px) {
     .shop-filters {
-        &__container {
-            margin: 0 auto;
-            background: #6fa4b34c;
-            // backdrop-filter: blur(2px);
-            color: #fff;
-            text-align: center;
-        }
-        &__block {}
-        &__label {}
-        &__input {}
+      
+       
         &__button {
             background: var(--action);
             border: solid 1px #e24c1e;
             color: #fff;
         }
-        &__checkbox-label {}
+        
     }
 }

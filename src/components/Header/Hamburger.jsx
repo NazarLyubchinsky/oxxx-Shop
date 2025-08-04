@@ -12,7 +12,6 @@ import { useShopItems } from '../../hooks/useShopitems'
 const Hamburger = () => {
 	const [isOpen, setIsOpen] = useState(false)
   const { items = [] } = useShopItems()
-
 	 const {
 		sortOrder,
 		setSortOrder,
@@ -27,8 +26,9 @@ const Hamburger = () => {
 		handleClearDia,
 		toggleDia,
 		
-		
-		
+    filtered,
+    setFiltered,
+    sortedItems
 	  } = useShopFilters(items)
 
 	const toggleMenu = () => {
@@ -60,7 +60,7 @@ const Hamburger = () => {
 						</li>
 					))}
 				</ul>
- <ShopFilters isBurgerAndShopFilter='true'
+ {/* <ShopFilters isBurgerAndShopFilter='true'
               sortOrder={sortOrder}
               setSortOrder={setSortOrder}
               filterEtFrom={filterEtFrom}
@@ -73,10 +73,12 @@ const Hamburger = () => {
               baseItems={baseItems}
               handleClearDia={handleClearDia}
               toggleDia={toggleDia}
-            />
+            /> */}
 				<div className="menu-mobile__button" onClick={toggleMenu}>
 					<Icon name="round-close" />
 				</div>
+
+			
 			</nav>
 			
 		</div>
