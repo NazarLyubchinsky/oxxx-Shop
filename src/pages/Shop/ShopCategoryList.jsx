@@ -47,9 +47,9 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
   return (
     <div className='shop-list__category'>
 
-        <button className="btn-filter-toggle" style={{color: 'black', background: 'red'}} onClick={() => setIsFilterOpenBurger(true)}>
+        {/* <button className="btn-filter-toggle" style={{color: 'black', background: 'red'}} onClick={() => setIsFilterOpenBurger(true)}>
   Фільтрація ssss
-</button>
+</button> */}
      {!selectedSize && (
   <div style={{ marginBottom: '10px' }}>
  

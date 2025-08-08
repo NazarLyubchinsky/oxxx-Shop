@@ -17,3 +17,7 @@
 @import "../pages/Shop/shopFilters.scss";
 @import "../components/Product/product.scss";
 // @import ".";
+
+body.noscroll {
+  overflow: hidden;
+}

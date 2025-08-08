@@ -12,13 +12,18 @@ import ShopCard from './ShopCard'
 import ShopCategoryList from './ShopCategoryList'
 import ShopFilters from './ShopFilters'
 import { useShopFilters } from './useShopFilters'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Icon from '../../components/Icon/Icon'
 
 const ShopPage = () => {
   const { items = [], isLoading } = useShopItems()
   const { size: paramSize, pcd: paramPCD } = useParams()
 
 const [IsFilterOpenBurger, setIsFilterOpenBurger] = useState()
+
+const toggleMenu = () => {
+		setIsFilterOpenBurger((prev) => !prev)
+	}
 
    const {
     sortOrder,
@@ -37,7 +42,19 @@ const [IsFilterOpenBurger, setIsFilterOpenBurger] = useState()
     setFiltered,
     sortedItems
   } = useShopFilters(items)
-  console.log(sortedItems)
+
+
+useEffect(() => {
+  if (IsFilterOpenBurger) {
+    document.body.classList.add('noscroll');
+  } else {
+    document.body.classList.remove('noscroll');
+  }
+
+  // Якщо користувач піде зі сторінки з відкритим фільтром:
+  return () => document.body.classList.remove('noscroll');
+}, [IsFilterOpenBurger]);
+
   return (
     <Section className="shop-section page">
       <div className="container">
@@ -75,11 +92,34 @@ const [IsFilterOpenBurger, setIsFilterOpenBurger] = useState()
               setFiltered={setFiltered}
               selectedSize={paramSize}
               selectedPCD={paramPCD}
-              setIsFilterOpenBurger={setIsFilterOpenBurger}
+              setIsFilterOpenBurger={toggleMenu}
             />
 
             {IsFilterOpenBurger && (
-              <div className='shop-block_content-panel'>wd</div>
+              <div className={`shop-block_content-panel ${IsFilterOpenBurger ? "shop-block_content-panel_opened" : ""}`}>
+
+{/* <button className="shop-block_content-panel_close" onClick={toggleMenu}>
+					<Icon name="round-close" />
+				</button> */}
+
+                {/* <ShopFilters
+             isBurgerAndShopFilter='true'
+              sortOrder={sortOrder}
+              setSortOrder={setSortOrder}
+              filterEtFrom={filterEtFrom}
+              filterEtTo={filterEtTo}
+              handleEtFromChange={handleEtFromChange}
+              handleEtToChange={handleEtToChange}
+              handleClearEtFilter={handleClearEtFilter}
+              selectedDia={selectedDia}
+              setSelectedDia={setSelectedDia}
+              baseItems={baseItems}
+              handleClearDia={handleClearDia}
+              toggleDia={toggleDia}
+
+             
+            /> */}
+              </div>
             )}
 
 

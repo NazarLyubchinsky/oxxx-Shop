@@ -5,31 +5,31 @@ import { MENU } from '../../utils/constants'
 // components
 import Icon from '../Icon/Icon'
 import Logo from '../Logo/Logo'
-import ShopFilters from '../../pages/Shop/ShopFilters'
-import { useShopFilters } from '../../pages/Shop/useShopFilters'
-import { useShopItems } from '../../hooks/useShopitems'
+// import ShopFilters from '../../pages/Shop/ShopFilters'
+// import { useShopFilters } from '../../pages/Shop/useShopFilters'
+// import { useShopItems } from '../../hooks/useShopitems'
 
 const Hamburger = () => {
 	const [isOpen, setIsOpen] = useState(false)
-  const { items = [] } = useShopItems()
-	 const {
-		sortOrder,
-		setSortOrder,
-		filterEtFrom,
-		filterEtTo,
-		handleEtFromChange,
-		handleEtToChange,
-		handleClearEtFilter,
-		selectedDia,
-		setSelectedDia,
-		baseItems,
-		handleClearDia,
-		toggleDia,
+//   const { items = [] } = useShopItems()
+	//  const {
+	// 	sortOrder,
+	// 	setSortOrder,
+	// 	filterEtFrom,
+	// 	filterEtTo,
+	// 	handleEtFromChange,
+	// 	handleEtToChange,
+	// 	handleClearEtFilter,
+	// 	selectedDia,
+	// 	setSelectedDia,
+	// 	baseItems,
+	// 	handleClearDia,
+	// 	toggleDia,
 		
-    filtered,
-    setFiltered,
-    sortedItems
-	  } = useShopFilters(items)
+    // filtered,
+    // setFiltered,
+    // sortedItems
+	//   } = useShopFilters(items)
 
 	const toggleMenu = () => {
 		setIsOpen((prev) => !prev)

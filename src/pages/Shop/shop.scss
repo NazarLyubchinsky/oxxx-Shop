@@ -37,18 +37,29 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
         }
         &_content {
             width: 100%;
+            
             &-panel{
+                transform: translateX(100vw);
+    transition: transform 0.75s ease-in-out;
+                &_opened{    
+                    transform: translateX(0);
+                }
                   position: fixed;
-  top: 0;
+  top: 52px;
   right: 0;
   width: 80%;
   max-width: 400px;
   height: 100%;
+  color: black;
   background: #fff;
   z-index: 1000;
   box-shadow: -2px 0 10px rgba(0,0,0,0.1);
   padding: 20px;
   overflow-y: auto;
+  &_close{
+   position: relative;
+   
+  }
             }
         }
     }
