@@ -95,14 +95,21 @@ useEffect(() => {
               setIsFilterOpenBurger={toggleMenu}
             />
 
-            {IsFilterOpenBurger && (
-              <div className={`shop-block_content-panel ${IsFilterOpenBurger ? "shop-block_content-panel_opened" : ""}`}>
+            {/* {IsFilterOpenBurger && ( */}
 
-{/* <button className="shop-block_content-panel_close" onClick={toggleMenu}>
+            {/* {IsFilterOpenBurger && ( */}
+  <div className={`${IsFilterOpenBurger ? 'shop-block_content-overlay' : '' }`} onClick={toggleMenu}>
+    {/* ! */}
+              <div className={`shop-block_content-panel ${IsFilterOpenBurger ? "shop-block_content-panel_opened" : ""}`}  onClick={(e) => e.stopPropagation()} >
+
+<button className="shop-block_content-panel_close" onClick={toggleMenu}>
+ <span className='close_text'> 
+    <img src="/images/icons8-фильтр-24.png" alt="опис" class="my-class" />
+  Фільтр за параметрами</span>
 					<Icon name="round-close" />
-				</button> */}
+				</button>
 
-                {/* <ShopFilters
+                <ShopFilters
              isBurgerAndShopFilter='true'
               sortOrder={sortOrder}
               setSortOrder={setSortOrder}
@@ -118,9 +125,11 @@ useEffect(() => {
               toggleDia={toggleDia}
 
              
-            /> */}
+            />
               </div>
-            )}
+               </div>
+{/* )} */}
+            {/* )} */}
 
 
             <ul className="shop-list">
