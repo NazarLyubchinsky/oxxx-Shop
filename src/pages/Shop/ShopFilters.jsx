@@ -45,8 +45,9 @@ return (
         </select>
       </div>
       <div className="shop-filters__block">
-        <label className="shop-filters__label">Виліт ET від:</label>
-        <input
+        <label className="shop-filters__label">Виліт (ET):</label>
+       <div className="shop-filters__wrapper">
+         <input
           type="number"
           placeholder="40"
           value={filterEtFrom}
@@ -54,9 +55,7 @@ return (
           className="shop-filters__input"
           min={0}
         />
-      </div>
-      <div className="shop-filters__block">
-        <label className="shop-filters__label">Виліт ET до:</label>
+        <span>-</span>
         <input
           type="number"
           placeholder="50"
@@ -65,7 +64,12 @@ return (
           className="shop-filters__input"
           min={0}
         />
+       </div>
       </div>
+      {/* <div className="shop-filters__block">
+        <label className="shop-filters__label">Виліт ET до:</label>
+        
+      </div> */}
 
       <button onClick={handleClearEtFilter} className="shop-filters__button">
         Скинути фільтр ET

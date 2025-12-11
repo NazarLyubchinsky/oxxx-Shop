@@ -80,7 +80,6 @@ import { MENU } from '../../utils/constants'
 
 //component
 import Logo from '../Logo/Logo'
-import Socials from '../Socials/Socials'
 import Hamburger from './Hamburger'
 
 // redux
@@ -122,12 +121,16 @@ const Header = () => {
 							)
 						}
 					</nav>
-					<Socials />
+
+					
 					{/* <Link to='/cart' className='header__block-cart'> */}
 						{/* <BsCart2 size={18} /> */}
 						{/* <small>{getTotalQuantity() || 0}</small> */}
 					{/* </Link> */}
-
+<div>
+						<span style={{color:"grey"}}>+38  </span>
+                        <span>096 03 09 009</span>
+					</div>
 				</header>
 		</section >
 	)

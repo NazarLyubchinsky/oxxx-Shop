@@ -57,3 +57,10 @@
 		padding: 0.625rem 0.875rem;
 	}
 }
+
+
+@mixin panel-style-borderBg {
+  border-bottom: 1px solid #f2f2f2;
+  background: #fbfbfb;
+  padding: 19px 19px 20px;
+}

@@ -2,7 +2,7 @@
 import {  useParams } from 'react-router-dom'
 import Preloader from '../../components/Preloader/Preloader'
 import Section from '../../components/Section/Section'
-import PageTitle from '../../components/Title/PageTitle'
+// import PageTitle from '../../components/Title/PageTitle'
 import { useShopItems } from '../../hooks/useShopitems'
 
 
@@ -58,7 +58,7 @@ useEffect(() => {
   return (
     <Section className="shop-section page">
       <div className="container">
-        <PageTitle text="Shop" />
+        {/* <PageTitle text="Shop" /> */}
 
         {isLoading ? (
           <Preloader />
@@ -102,12 +102,14 @@ useEffect(() => {
     {/* ! */}
               <div className={`shop-block_content-panel ${IsFilterOpenBurger ? "shop-block_content-panel_opened" : ""}`}  onClick={(e) => e.stopPropagation()} >
 
-<button className="shop-block_content-panel_close" onClick={toggleMenu}>
+<div className="shop-block_content-panel_close" >
  <span className='close_text'> 
     <img src="/images/icons8-фильтр-24.png" alt="опис" class="my-class" />
   Фільтр за параметрами</span>
-					<Icon name="round-close" />
-				</button>
+				<button onClick={toggleMenu}>
+          	<Icon name="round-close" />
+        </button>
+				</div>
 
                 <ShopFilters
              isBurgerAndShopFilter='true'
@@ -146,6 +148,7 @@ useEffect(() => {
 }
 
 export default ShopPage
+
 
 
 

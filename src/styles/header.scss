@@ -17,25 +17,29 @@
 
 header {
     padding: 0 15px;
-    background-color: var(--dark);
+    background-color:black;
     // padding-top: 1.25rem;
     display: grid;
-    grid-template-columns: 1fr max-content 1fr 0fr;
+    grid-template-columns: max-content 1fr max-content;
     justify-content: space-between;
     align-items: center;
     @media only screen and (max-width: 780px) {
         padding-bottom: 10px;
         padding-top: 10px;
-        grid-template-columns: 0fr 0fr 0fr;
+        grid-template-columns: 0fr max-content ;
     }
     @media only screen and (max-width: 380px) {
         padding-top: 10px;
         padding-bottom: 10px;
-        grid-template-columns: 0fr 0fr;
     }
     .logo {
+          width: 150px;
+          @media only screen and (max-width: 991px) {
+              width: 87px;
+
+          }
         @media only screen and (max-width: 780px) {
-            width: 32px;
+            width: 50px;
         }
     }
 }
