@@ -19,13 +19,19 @@ const AppRoutes = () => {
 				
 				<Route index element={<Home />} />
 				<Route path='/tour' element={<TourPage />} />
+				{/* shop routes (with optional shop prefix like /r3/shop or /angar/shop) */}
 				<Route path='/shop' element={<ShopPage />} />
 				<Route path='/shop/:size' element={<ShopPage />} />
-                <Route path='/shop/:size/:pcd' element={<ShopPage />} />
+				<Route path='/shop/:size/:pcd' element={<ShopPage />} />
+
+				<Route path='/:shop/shop' element={<ShopPage />} />
+				<Route path='/:shop/shop/:size' element={<ShopPage />} />
+				<Route path='/:shop/shop/:size/:pcd' element={<ShopPage />} />
               
 
 
-               <Route path='/shop/product/:id' element={<Product />} />
+			   <Route path='/shop/product/:id' element={<Product />} />
+				<Route path='/:shop/shop/product/:id' element={<Product />} />
 
 				<Route path='/news' element={<NewsPage />} />
 				<Route path='/cart' element={<Cart />} />

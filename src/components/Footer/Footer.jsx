@@ -1,5 +1,3 @@
-import React from 'react'
-
 // images
 import Logo from "../Logo/Logo";
 import Socials from "../Socials/Socials";
@@ -8,7 +6,6 @@ import Socials from "../Socials/Socials";
 import FooterForm from './FooterForm'
 
 const Footer = () => {
-	const year = new Date().getFullYear();
 	return (
 		<footer className='footer'>
 			<div className="container">
@@ -20,7 +17,7 @@ const Footer = () => {
 							<div className="footer-info__logo">
 								<Logo />
 							</div>
-							<p>name, {year}</p>
+							
 						</div>
 
 						<Socials width={22} height={22} />

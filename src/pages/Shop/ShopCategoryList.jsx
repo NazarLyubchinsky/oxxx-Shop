@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShopItems } from '../../hooks/useShopitems';
+import { getShopPrefix } from '../../utils/shopDetect';
 
 const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, setIsFilterOpenBurger }) => {
   const { items = [] } = useShopItems();
@@ -30,16 +31,17 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
 
   const handleSizeClick = (size) => {
     const newSize = size === selectedSize ? null : size;
-    navigate(newSize ? `/shop/${newSize}` : '/shop');
+    const prefix = getShopPrefix()
+    navigate(newSize ? `${prefix}/shop/${newSize}` : `${prefix}/shop`);
   };
 
  const handlePCDClick = (pcd) => {
   const newPCD = pcd === selectedPCD ? null : pcd;
-
+  const prefix = getShopPrefix()
   if (!newPCD) {
-    navigate(`/shop/${selectedSize}`);
+    navigate(`${prefix}/shop/${selectedSize}`);
   } else {
-    navigate(`/shop/${selectedSize}/${newPCD}`);
+    navigate(`${prefix}/shop/${selectedSize}/${newPCD}`);
   }
 };
 
@@ -77,7 +79,7 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
           
           <div className='shop-list__category-row'>
              <button
-        onClick={() => navigate('/shop')}
+        onClick={() => navigate(`${getShopPrefix()}/shop`)}
          className={`shop-list__category-item`}
           
       >
