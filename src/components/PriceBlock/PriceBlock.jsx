@@ -1,5 +1,4 @@
 import React from 'react';
-import { calculateDiscountedPrice } from '../../utils/common';
 
 const PriceBlock = ({ price, discount }) => {
   const fullPrice = Math.ceil((price * 47) / 4).toLocaleString('uk-UA') + ' грн./шт';
