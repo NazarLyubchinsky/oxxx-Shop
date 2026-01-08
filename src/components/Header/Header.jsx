@@ -9,7 +9,7 @@ import { MENU } from '../../utils/constants'
 //component
 import Logo from '../Logo/Logo'
 import Hamburger from './Hamburger'
-import { detectShop } from '../../utils/shopDetect'
+import { detectShop, getShopPrefix } from '../../utils/shopDetect'
 
 const Header = () => {
 	const shop = detectShop()
@@ -42,9 +42,15 @@ const Header = () => {
 									animateIn="fadeInDown"
 									delay={i * 100}
 									offset={0}>
-									<NavLink className={({ isActive }) => (isActive ? "active" : '')} to={`/${link}`}>
-										{name}
-									</NavLink>
+									{(() => {
+										const prefix = getShopPrefix()
+										const to = `${prefix}/${link}`
+										return (
+											<NavLink className={({ isActive }) => (isActive ? "active" : '')} to={to}>
+												{name}
+											</NavLink>
+										)
+									})()}
 								</ScrollAnimation>
 							)
 						}

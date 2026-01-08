@@ -8,7 +8,8 @@ const PriceBlock = ({ price, discount }) => {
     return <span className="shop-list__item-price">{fullPrice}</span>;
   }
 
-  const discountedPrice = Math.ceil((calculateDiscountedPrice(price, discount) * 47) / 4).toLocaleString('uk-UA') + ' грн./шт';
+  // `discount` is now the final price in USD (not percent). Convert using rate 47.
+  const discountedPrice = Math.ceil((discount * 47) / 4).toLocaleString('uk-UA') + ' грн./шт';
 
   return (
     <>

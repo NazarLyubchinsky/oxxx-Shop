@@ -86,8 +86,13 @@ export const getAsset = async (assetId) => {
 	}
 };
 
+/**
+ * New behavior: `discount` is the final price in USD (not percent).
+ * If `discount` is provided, return it (final price), otherwise return original price.
+ * Existing percentage-based discounts are no longer supported.
+ */
 export const calculateDiscountedPrice = (price, discount) => {
-	return discount ? price - (price * (discount / 100)) : price;
+	return discount ? discount : price;
 };
 
 
