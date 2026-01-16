@@ -44,20 +44,7 @@ const ShopCard = memo(({ el }) => {
        <div className="shop-list__item-body">
        <h1 className="shop-list__item-title">{title}</h1>
 
-{/* {!discount ? (
-<span className="shop-list__item-price">
-{Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
-</span>
-) : (
-<>
-<span className="shop-list__item-price old-price">
-{Math.ceil(price * 47 / 4).toLocaleString('uk-UA')} грн./шт
-</span>
-<span className="shop-list__item-priceSale">
-{Math.ceil(calculateDiscountedPrice(price, discount) * 47 / 4).toLocaleString('uk-UA')} грн./шт
-</span>
-</>
-)} */}
+
 
 <PriceBlock price={price} discount={discount}/>
        </div>
