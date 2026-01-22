@@ -3,8 +3,6 @@ import PriceBlock from '../PriceBlock/PriceBlock'
 const ProductTitle = ({ product }) => {
 	// const { title, category, discount, price } = product
 	const { title,  discount, price } = product
-
-	console.log(title)
 	return (
 		<>
 			<h2 className="product__title">

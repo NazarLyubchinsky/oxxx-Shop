@@ -20,6 +20,7 @@
         width: 45%;
     }
     &__title {
+        text-align: center;
         font-weight: 500;
         font-size: 28px;
         text-transform: uppercase;
@@ -154,9 +155,7 @@
     .mySwiper3 {
         display: none !important;
     }
-    .product__text {
-        display: none;
-    }
+  
 }
 
 @media only screen and (max-width: 768px) {
