@@ -3,7 +3,6 @@
 // import { useTourItems } from '../../hooks/useTourItems';
 
 // import Preloader from '../../components/Preloader/Preloader';
-import PageTitle from '../../components/Title/PageTitle';
 // import TourItem from './TourItem';
 
 const TourPage = () => {

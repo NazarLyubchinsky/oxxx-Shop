@@ -63,7 +63,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import {  useLocation, useParams } from 'react-router-dom'
 import { getShopItem } from '../../reducers/shopReducer'
 import Preloader from '../Preloader/Preloader'
-import ProductInfo from './ProductInfo'
 import ProductSlide from './ProductSlide'
 import ProductTitle from './ProductTitle'
 
