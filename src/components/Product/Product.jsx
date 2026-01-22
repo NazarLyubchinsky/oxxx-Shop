@@ -107,7 +107,7 @@ const Product = () => {
 						</div>
 						<div className="product__row">
 							<ProductSlide product={item} />
-							<ProductInfo product={item} />
+							{/* <ProductInfo product={item} /> */}
 						</div>
 					</div>
 				)}
