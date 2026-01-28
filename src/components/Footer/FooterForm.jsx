@@ -7,7 +7,7 @@ const FooterForm = () => {
 	const links = {
 		r3: {
 			instagram: 'https://www.instagram.com/r3.autocenter/',
-			tiktok: 'https://www.tiktok.com/@avtoangar'
+			tiktok: 'https://www.tiktok.com/@r3_autocenter'
 		},
 		angar: {
 			instagram: 'https://www.instagram.com/avto.angar_/',
