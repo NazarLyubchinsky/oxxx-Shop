@@ -107,14 +107,14 @@ return (
         ))}
 
 
-        <div style={{ marginTop: 8 }}> // кнопки для мобільного виду
+        <div style={{ marginTop: 8 }}> {/* кнопка удалити при потребі */}
           <button
             onClick={handleClearDia}
             className="shop-filters__button"
           >
             Скинути DIA
           </button>
-          // Відкриваємо Viber при кліку на кнопку, передаючи номер телефону
+         {/* кнопка удалити при потребі */}
           <button
             onClick={() => openViber(viberNumber)}
             className="shop-filters__button"
