@@ -96,7 +96,7 @@ return (
 
           <button
             onClick={handleClearDia}
-            style={{ marginBottom: '50px' }}
+            style={{ marginBottom: '8px' }}
             className="shop-filters__button"
           >
             Скинути DIA

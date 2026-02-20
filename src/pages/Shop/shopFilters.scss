@@ -61,6 +61,8 @@
                 width: 100%;
             color: #fff;
             text-align: center;
+            padding-bottom: 16px;
+            //це удалити
         }
         //  @media (max-width: 450px) {
         //     max-width: 280px;
@@ -117,7 +119,11 @@ width: 100%;
         font-size: 14px;
         margin-top: 8px;
         color: #000;
-        margin: 19px 19px 20px;
+        //це удалити  margin: 19px 19px 20px;
+        margin: 8px 8px 8px;
+        @media (max-width: 991.98px) {
+            margin: 8px 8px 8px;
+        }
     }
     &__checkbox-label {
         font-size: 14px;
