@@ -26,6 +26,20 @@ const diaOptions = useMemo(() => {
   return uniq;
 }, [baseItems]);
 
+//можливо тре удалити, бо не використовується
+
+// Viber contact helper
+const viberNumber = '+380960309009';
+const openViber = (num) => {
+  const viberUrl = `viber://chat?number=${encodeURIComponent(num)}`;
+  // Try opening native app first
+  window.location.href = viberUrl;
+  // Fallback to Viber web after short delay if app not available
+  setTimeout(() => {
+    window.location.href = 'https://www.viber.com/';
+  }, 1500);
+};
+
 
 
 
@@ -91,12 +105,25 @@ return (
             {` ${diaValue}`}
           </label>
         ))}
-        <button
-          onClick={handleClearDia}
-          className="shop-filters__button"
-        >
-          Скинути DIA
-        </button>
+
+
+        <div style={{ marginTop: 8 }}> // кнопки для мобільного виду
+          <button
+            onClick={handleClearDia}
+            className="shop-filters__button"
+          >
+            Скинути DIA
+          </button>
+          // Відкриваємо Viber при кліку на кнопку, передаючи номер телефону
+          <button
+            onClick={() => openViber(viberNumber)}
+            className="shop-filters__button"
+            style={{ marginLeft: 8 }}
+            aria-label="Написати у Viber"
+          >
+            Написати у Viber
+          </button>
+        </div>
       </div>
       </div>
        
