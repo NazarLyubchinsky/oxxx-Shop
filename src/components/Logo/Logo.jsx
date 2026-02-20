@@ -9,9 +9,15 @@ const Logo = () => {
 	const src = shop === 'angar' ? logoAngar : logoR3
 	const alt = shop === 'angar' ? 'Angar logo' : 'R3 logo'
 
+	// When clicking the logo we want to go to the site's root '/',
+	// but preserve the current shop for rendering the logo on the root page.
+	const handleClick = () => {
+		try { window.localStorage.setItem('LAST_SHOP', shop) } catch (e) {}
+	}
+
 	return (
 		<div className='logo'>
-			<Link to='/' >
+			<Link to='/' onClick={handleClick}>
 				<img src={src} alt={alt} />
 			</Link>
 		</div>

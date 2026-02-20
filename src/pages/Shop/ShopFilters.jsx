@@ -19,9 +19,12 @@ baseItems,
 
   
 
-const diaOptions = useMemo(() => (
-  [...new Set(baseItems.map(item => item.dia))].filter(Boolean)
-), [baseItems]);
+const diaOptions = useMemo(() => {
+  const uniq = [...new Set(baseItems.map(item => item.dia))].filter(Boolean);
+  // sort numeric values ascending (handles decimals)
+  uniq.sort((a, b) => parseFloat(a) - parseFloat(b));
+  return uniq;
+}, [baseItems]);
 
 
 

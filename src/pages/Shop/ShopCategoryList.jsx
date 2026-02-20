@@ -7,12 +7,31 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
   const { items = [] } = useShopItems();
   const navigate = useNavigate();
 
-  const sizes = useMemo(() => [...new Set(items.map(item => item.size).filter(Boolean))], [items]);
+  const sizes = useMemo(() => {
+    const unique = [...new Set(items.map(item => item.size).filter(Boolean))];
+    // sort by numeric portion (e.g. R14, R16)
+    unique.sort((a, b) => {
+      const na = parseInt(a.replace(/[^\d]/g, ''), 10);
+      const nb = parseInt(b.replace(/[^\d]/g, ''), 10);
+      return na - nb;
+    });
+    return unique;
+  }, [items]);
 
   const pcds = useMemo(() => {
     if (!selectedSize) return [];
     const filteredItems = items.filter(item => item.size === selectedSize);
-    return [...new Set(filteredItems.map(item => item.pcd).filter(Boolean))];
+    const uniq = [...new Set(filteredItems.map(item => item.pcd).filter(Boolean))];
+    // sort PCD values numerically if they contain digits
+    uniq.sort((a, b) => {
+      const na = parseInt(a.replace(/[^\d]/g, ''), 10);
+      const nb = parseInt(b.replace(/[^\d]/g, ''), 10);
+      if (!isNaN(na) && !isNaN(nb)) {
+        return na - nb;
+      }
+      return a.localeCompare(b);
+    });
+    return uniq;
   }, [selectedSize, items]);
 
   useEffect(() => {
