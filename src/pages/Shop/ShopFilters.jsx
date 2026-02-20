@@ -107,7 +107,7 @@ return (
         ))}
 
 
-        <div style={{ marginTop: 8, marginBottom:50 }}> {/* кнопка удалити при потребі */}
+        <div style={{ marginTop: 8, marginBottom:150 }}> {/* кнопка удалити при потребі */}
           <button
             onClick={handleClearDia}
             className="shop-filters__button"
