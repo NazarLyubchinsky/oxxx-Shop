@@ -1,1 +1,1 @@
-export const euro = 49;
+export const euro = 50;
