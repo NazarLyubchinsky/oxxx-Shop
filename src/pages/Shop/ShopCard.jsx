@@ -16,7 +16,11 @@ import PriceBlock from '../../components/PriceBlock/PriceBlock';
 
 const ShopCard = memo(({ el }) => {
   const { sys: { id }, title,  price, discount, imageCollection } = el;
- const image = imageCollection?.items || [];
+  const image = imageCollection?.items || [];
+ 
+  // Видаляємо "dia", "DIA", "d", "D" з номерами (типу dia57.1, DIA 66.6, D66.5) з назви
+  const cleanedTitle = title.replace(/(?:dia|DIA|d|D)\s*\d+\.?\d*/gi, '').trim();
+  
   return (
     <li className="shop-list__item" key={id}>
 
@@ -32,7 +36,7 @@ const ShopCard = memo(({ el }) => {
     effect="blur"
     className="shop-list__item-image"
     src={image[0].url}
-    alt={title}
+    alt={cleanedTitle}
   />
 )}
 
@@ -42,7 +46,7 @@ const ShopCard = memo(({ el }) => {
       </div>
 
        <div className="shop-list__item-body">
-       <h1 className="shop-list__item-title">{title}</h1>
+       <h1 className="shop-list__item-title">{cleanedTitle}</h1>
 
 
 
