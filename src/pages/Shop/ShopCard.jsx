@@ -18,8 +18,11 @@ const ShopCard = memo(({ el }) => {
   const { sys: { id }, title,  price, discount, imageCollection } = el;
   const image = imageCollection?.items || [];
  
-  // Видаляємо "dia", "DIA", "d", "D" з номерами (типу dia57.1, DIA 66.6, D66.5) з назви
-  const cleanedTitle = title.replace(/(?:dia|DIA|d|D)\s*\d+\.?\d*/gi, '').trim();
+  // Видаляємо "dia", "DIA", "d", "D" з номерами (напр. dia57.1, DIA 66.6, D66.5, dia66,6, d66,6-57,1) з назви
+  const cleanedTitle = title
+    .replace(/(?:dia|DIA|d|D)\s*\d+(?:[.,]\d+)?(?:-\d+(?:[.,]\d+)?)?/gi, '') // цифри, можливий діапазон через -
+    .replace(/,+/g, '') // видаляємо зайві коми, які могли залишитися
+    .trim();
   
   return (
     <li className="shop-list__item" key={id}>
