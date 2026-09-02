@@ -1,6 +1,6 @@
 /**
  * Detects the current shop ('r3' or 'angar') from multiple sources
- * Priority: pathname > env variable > hostname > default (r3)
+ * Priority: pathname > env variable > hostname > default (angar)
  * @returns {string} - 'r3' or 'angar'
  */
 export const detectShop = () => {
@@ -33,7 +33,7 @@ export const detectShop = () => {
 		if (host.includes('angar')) return 'angar'
 	}
 
-	return 'r3'
+	return 'angar'
 }
 
 /**

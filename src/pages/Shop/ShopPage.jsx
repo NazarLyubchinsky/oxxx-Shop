@@ -38,6 +38,10 @@ const toggleMenu = () => {
     baseItems,
     handleClearDia,
     toggleDia,
+    showNewOnly,
+    toggleNewOnly,
+    showUsedItems,
+    toggleUsedItems,
     filtered,
     setFiltered,
     sortedItems
@@ -81,8 +85,10 @@ useEffect(() => {
               baseItems={baseItems}
               handleClearDia={handleClearDia}
               toggleDia={toggleDia}
-
-             
+              showNewOnly={showNewOnly}
+              toggleNewOnly={toggleNewOnly}
+              showUsedItems={showUsedItems}
+              toggleUsedItems={toggleUsedItems}
             />
   
 
@@ -125,8 +131,10 @@ useEffect(() => {
               baseItems={baseItems}
               handleClearDia={handleClearDia}
               toggleDia={toggleDia}
-
-             
+              showNewOnly={showNewOnly}
+              toggleNewOnly={toggleNewOnly}
+              showUsedItems={showUsedItems}
+              toggleUsedItems={toggleUsedItems}
             />
               </div>
                </div>

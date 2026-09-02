@@ -15,6 +15,19 @@ const [sortOrder, setSortOrder] = useState(() => {
     const urlDia = searchParams.get('dia');
     return urlDia ? urlDia.split(',') : [];
   });
+  const initialNewOnly = (() => {
+    const urlNew = searchParams.get('new');
+    return urlNew === '1' || urlNew === 'true' || urlNew === 'on';
+  })();
+
+  const [showNewOnly, setShowNewOnly] = useState(initialNewOnly);
+  const [showUsedItems, setShowUsedItems] = useState(() => {
+    const urlUsed = searchParams.get('used');
+    if (urlUsed !== null) {
+      return urlUsed === '1' || urlUsed === 'true' || urlUsed === 'on';
+    }
+    return !initialNewOnly;
+  });
 
   const etFromParam = searchParams.get('etFrom') || ''
   const etToParam = searchParams.get('etTo') || ''
@@ -48,11 +61,25 @@ const [sortOrder, setSortOrder] = useState(() => {
     return filteredByEt.filter(item => selectedDia.includes(item.dia));
   }, [filteredByEt, selectedDia]);
 
+  const filteredByCondition = useMemo(() => {
+    const isNewItem = item => /NEW/i.test(item.title || item.name || '');
+
+    if (showNewOnly && showUsedItems) {
+      return filteredByDia;
+    }
+
+    if (showNewOnly) {
+      return filteredByDia.filter(item => isNewItem(item));
+    }
+
+    return filteredByDia.filter(item => !isNewItem(item));
+  }, [filteredByDia, showNewOnly, showUsedItems]);
+
   const sortedItems = useMemo(() => {
-    return [...filteredByDia].sort((a, b) => {
+    return [...filteredByCondition].sort((a, b) => {
       return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
     });
-  }, [filteredByDia, sortOrder]);
+  }, [filteredByCondition, sortOrder]);
 
   const handleEtFromChange = e => {
     const val = e.target.value
@@ -105,6 +132,59 @@ const [sortOrder, setSortOrder] = useState(() => {
     setSearchParams(params);
   };
 
+  const applyProductFilters = (nextNewOnly, nextUsedOnly) => {
+    let nextNew = Boolean(nextNewOnly);
+    let nextUsed = Boolean(nextUsedOnly);
+
+    if (!nextNew && !nextUsed) {
+      nextUsed = true;
+    }
+
+    setShowNewOnly(nextNew);
+    setShowUsedItems(nextUsed);
+
+    const params = Object.fromEntries(searchParams.entries());
+
+    if (nextNew) {
+      params.new = '1';
+    } else {
+      delete params.new;
+    }
+
+    if (nextUsed) {
+      params.used = '1';
+    } else {
+      delete params.used;
+    }
+
+    setSearchParams(params);
+  };
+
+  const toggleNewOnly = () => {
+    if (showNewOnly) {
+      applyProductFilters(false, true);
+      return;
+    }
+
+    if (showUsedItems) {
+      applyProductFilters(true, true);
+    } else {
+      applyProductFilters(true, false);
+    }
+  };
+
+  const toggleUsedItems = () => {
+    if (showUsedItems) {
+      if (showNewOnly) {
+        applyProductFilters(true, false);
+      } else {
+        applyProductFilters(false, true);
+      }
+      return;
+    }
+
+    applyProductFilters(showNewOnly, true);
+  };
 
   const updateSortOrder = (value) => {
   setSortOrder(value);
@@ -129,6 +209,10 @@ const [sortOrder, setSortOrder] = useState(() => {
     baseItems,
     handleClearDia,
     toggleDia,
+    showNewOnly,
+    toggleNewOnly,
+    showUsedItems,
+    toggleUsedItems,
     filtered,
     setFiltered,
     sortedItems

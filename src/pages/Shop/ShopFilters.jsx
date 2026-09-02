@@ -9,11 +9,14 @@ const ShopFilters = ({
   handleEtToChange,
   handleClearEtFilter,
   selectedDia,
-isBurgerAndShopFilter,
-handleClearDia,
-toggleDia,
-baseItems,
-
+  isBurgerAndShopFilter,
+  handleClearDia,
+  toggleDia,
+  baseItems,
+  showNewOnly,
+  toggleNewOnly,
+  showUsedItems,
+  toggleUsedItems,
 }) => {
  
 
@@ -77,6 +80,22 @@ return (
 
       <button onClick={handleClearEtFilter} className="shop-filters__button">
         Скинути фільтр ET
+      </button>
+
+      <button
+        type="button"
+        onClick={toggleNewOnly}
+        className={`shop-filters__button ${showNewOnly ? 'shop-filters__button_active' : ''}`}
+      >
+        {showNewOnly ? 'Нові диски: увімкнено' : 'Нові диски'}
+      </button>
+
+      <button
+        type="button"
+        onClick={toggleUsedItems}
+        className={`shop-filters__button ${showUsedItems ? 'shop-filters__button_active' : ''}`}
+      >
+        {showUsedItems ? 'Вживані диски: увімкнено' : 'Вживані диски'}
       </button>
 
       <div className="shop-filters__block">
