@@ -75,10 +75,14 @@ li {
 
 .container {
     // width: 75rem;
+    padding: 0 1.875rem;
     margin: 0 auto;
     @media only screen and (max-width: 85.375rem) {
         width: calc(100vw - 1.875rem);
-        // padding: 0 0.9375rem;
+        padding: 0 0.9375rem;
+    }
+     @media only screen and (max-width: 576px) {
+        padding: 0 ;
     }
 }
 
