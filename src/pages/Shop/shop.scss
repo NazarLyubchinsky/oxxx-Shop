@@ -255,8 +255,9 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 margin: 1.125rem 0 1.75rem;
             }
             &-toggle{
-                    background: #e5e5e5;
+                 border: 1px solid (var(--action));
                             padding: 10px 9px 9px;
+                            border-radius: 12px;
                                     width: 100%;
                                  color: #383838;
                                     text-align: center;
@@ -267,16 +268,14 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                                     &_image{
                                              background: url('/images/icons8-фильтр-24.png') no-repeat center;
                                               background-size: contain;
-                                        margin-right: 8px;
-                                  width: 15px;
-                                height: 13px;
+                                // height: 13px;
                             margin: 0 7px 0 0;
                           display: inline-block;
                             width: 16px;
                               height: 16px;
                                     }
 
-                                    @media only screen and (min-width: 991px) {
+                                    @media only screen and (min-width: 992px) {
                display: none;
             }  
                               
@@ -285,10 +284,23 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
+                width: 100%;
             }
             &-item {
+                &:first-child {
+                flex-basis: 100px;
+               min-width: 100px;
+          }
+          display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  flex: 1 1 80px;
+//   min-width: 80px;
+                // flex: 1 1 80px; 
+//   min-width: 80px;
                 padding: 1rem 1.0625rem;
-                border: 1px solid;
+                // border: 1px solid;
                 text-align: center;
                 border-color: var(--black-color);
                 font-weight: 500;
@@ -298,8 +310,8 @@ $easing: cubic-bezier(0.4, 0, 0.2, 1);
                 color: var(--dark);
                 transition: all 0.3s ease-in;
                 cursor: pointer;
-                border: 1px solid #f2f2f2;
-                background: #cecece;
+                border: 1px solid (var(--action));
+                // background: #cecece;
                 border-radius: 8px;
                 &:hover {
                     background: var(--action);

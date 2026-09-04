@@ -25,27 +25,38 @@
         gap: 30px;
     }
     &__block{
-       
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
          @include panel-style-borderBg;
          &-display{
             display: flex;
          }
     }
+    &__checkboxes{
+         display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding-top: 8px;
+    width: 100%;
+    }
     &__container {
-        position: sticky;
-        top: 5.8rem;
-        left: 0;
-        color: black;
-        border: 1px solid #ddd;
-        border-radius: 10px;
+        // position: sticky;
+        // top: 5.8rem;
+        // left: 0;
+        // color: black;
+        // border: 1px solid #ddd;
+        // border-radius: 10px;
         max-width: 339px;
        width: 339px;
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        // height: 90vh;
+        // display: flex;
+        // flex-direction: column;
+        // gap: 16px;
         font-family: sans-serif;
-        overflow-y: scroll;
+        // overflow-y: scroll;
         overflow-x: hidden;
         scrollbar-width: thin;
         scrollbar-color: #bbb #f2f2f2;
@@ -71,10 +82,15 @@
         //  }
     }
     &__body {
-        height: 100%;
+        border: 1px solid (var(--action));
+        border-radius: 12px;
+        height: auto;
         color: black;
         display: flex;
         flex-direction: column;
+        @media (max-width: 991.98px) {
+            border: none;
+        }
     }
    
     &__label {
@@ -90,7 +106,7 @@
   
   background-color: #fff;
   color: black;
-  border: 1px solid #ccc;
+  border: 1px solid (var(--action));
   border-radius: 6px;
   padding: 8px 12px;
   font-size: 14px;
@@ -101,20 +117,24 @@ width: 100%;
 
 &:focus{
      outline: none;
-  border-color: #999;
+//   border-color: #999;
+//   border-color: (var(--action));
   }
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   &:hover{
-    border-color: #888;
+    background-color: (var(--action));
+    // color: (var(--light));
+    // border: (var(--action));
   }
 
-        @media only screen and (max-width: 991.98px) {
-            color: #888888;
-        }
+        // @media only screen and (max-width: 991.98px) {
+        //     color: #888888;
+        // }
     }
     &__button {
         padding: 8px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
+        background-color: (var(--light));
+        border: 1px solid (var(--action));
         border-radius: 6px;
         cursor: pointer;
         font-size: 14px;
@@ -122,6 +142,9 @@ width: 100%;
         color: #000;
         //це удалити  margin: 19px 19px 20px;
         margin: 8px 8px 8px;
+         transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+
+@include panel-style-borderHover;
         @media (max-width: 991.98px) {
             margin: 8px 8px 8px;
         }
@@ -133,11 +156,40 @@ width: 100%;
         }
     }
     &__checkbox-label {
-        font-size: 14px;
-        margin-top: 2px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
+       
+display: flex;
+align-items: center;
+        width: 100%;
+    min-width: 0;
+    min-height: 34px;
+    margin: 0;
+    padding: 6px 5px;
+    justify-content: center;
+    border: 1px solid var(--action);
+    border-radius: 7px;
+   
+    font-size: 0.73rem;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: none;
+
+     transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+
+    input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  @include panel-style-borderHover;
+
     }
 }
 
@@ -147,16 +199,3 @@ width: 100%;
     }
 }
 
-@media (max-width: 991.98px) {
-    .shop-filters {
-      
-       
-        &__button {
-            background: var(--action);
-            border: solid 1px #e24c1e;
-            color: #fff;
-            
-        }
-        
-    }
-}

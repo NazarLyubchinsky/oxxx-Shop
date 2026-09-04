@@ -70,11 +70,11 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
 
         <button className="shop-list__category-toggle"  onClick={() => setIsFilterOpenBurger(true)}>
   <i className="shop-list__category-toggle_image"></i>
-  Фільтр
+  Фільтри
 
 </button>
      {!selectedSize && (
-  <div style={{ marginBottom: '10px' }}>
+  // <div style={{ marginBottom: '10px' }}>
  
     <div className='shop-list__category-row'>
 
@@ -89,7 +89,7 @@ const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, se
         </button>
       ))}
     </div>
-  </div>
+  // </div>
 )}
 
 

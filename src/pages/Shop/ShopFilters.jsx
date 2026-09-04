@@ -100,7 +100,8 @@ return (
 
       <div className="shop-filters__block">
         <label className="shop-filters__label">DIA (ступиця):</label>
-        {diaOptions.map((diaValue) => (
+       <div className="shop-filters__checkboxes">
+         {diaOptions.map((diaValue) => (
           <label key={diaValue} className="shop-filters__checkbox-label">
             <input
               type="checkbox"
@@ -111,6 +112,7 @@ return (
             {` ${diaValue}`}
           </label>
         ))}
+       </div>
 
 
           <button

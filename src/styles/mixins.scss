@@ -58,6 +58,15 @@
 	}
 }
 
+@mixin panel-style-borderHover {
+	 &:hover,
+  &:has(input:checked) {
+     background-color: ((var(--action)));
+    color: ((var(--light)));
+   
+  }
+}
+
 
 @mixin panel-style-borderBg {
   border-bottom: 1px solid #f2f2f2;
