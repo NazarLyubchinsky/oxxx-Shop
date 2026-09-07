@@ -4,9 +4,9 @@ import { useShopFilters } from './useShopFilters';
 
 describe('useShopFilters NEW and used filters', () => {
   const items = [
-    { title: 'R21*8.0J PC*139.7 ET45 216801 NEW', price: 100 },
-    { title: 'R17 7J ET40 5x114.3 wheel', price: 90 },
-    { title: 'R16 6J ET35 5x114.3 used wheel', price: 80 },
+    { title: 'R21*8.0J PC*139.7 ET45 216801 NEW', supplier: 'LUX-SHINA', price: 100 },
+    { title: 'R17 7J ET40 5x114.3 wheel', supplier: null, price: 90 },
+    { title: 'R16 6J ET35 5x114.3 used wheel', supplier: 'LUX-SHINA', price: 80 },
   ];
 
   it('shows used items by default', () => {
@@ -110,5 +110,23 @@ describe('useShopFilters NEW and used filters', () => {
     expect(result.current.showUsedItems).toBe(true);
     expect(result.current.showNewOnly).toBe(false);
     expect(result.current.sortedItems).toHaveLength(2);
+  });
+
+  it('filters products with a filled supplier value', () => {
+    const wrapper = ({ children }) => (
+      <MemoryRouter initialEntries={['/shop']}>
+        {children}
+      </MemoryRouter>
+    );
+
+    const { result } = renderHook(() => useShopFilters(items), { wrapper });
+
+    act(() => {
+      result.current.togglePzOnly();
+    });
+
+    expect(result.current.showPzOnly).toBe(true);
+    expect(result.current.sortedItems).toHaveLength(1);
+    expect(result.current.sortedItems[0].supplier).toBe('LUX-SHINA');
   });
 });

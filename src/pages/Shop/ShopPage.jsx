@@ -42,6 +42,8 @@ const toggleMenu = () => {
     toggleNewOnly,
     showUsedItems,
     toggleUsedItems,
+    showPzOnly,
+    togglePzOnly,
     filtered,
     setFiltered,
     sortedItems
@@ -89,6 +91,8 @@ useEffect(() => {
               toggleNewOnly={toggleNewOnly}
               showUsedItems={showUsedItems}
               toggleUsedItems={toggleUsedItems}
+              showPzOnly={showPzOnly}
+              togglePzOnly={togglePzOnly}
             />
   
 
@@ -135,6 +139,8 @@ useEffect(() => {
               toggleNewOnly={toggleNewOnly}
               showUsedItems={showUsedItems}
               toggleUsedItems={toggleUsedItems}
+              showPzOnly={showPzOnly}
+              togglePzOnly={togglePzOnly}
             />
               </div>
                </div>

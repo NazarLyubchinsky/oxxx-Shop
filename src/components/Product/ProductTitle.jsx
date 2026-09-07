@@ -2,11 +2,14 @@ import PriceBlock from '../PriceBlock/PriceBlock'
 
 const ProductTitle = ({ product }) => {
 	// const { title, category, discount, price } = product
-	const { title,  discount, price } = product
+	const { title, supplier, discount, price } = product
+	const supplierValue = String(supplier || '').trim()
+	const supplierPrefix = supplierValue.slice(0, 1) + supplierValue.slice(2, 3)
+	const displayTitle = supplierPrefix ? `${supplierPrefix} ${title}` : title
 	return (
 		<>
 			<h2 className="product__title">
-				{title}
+				{displayTitle}
 			</h2>
 			<p className="product__category">
 				{/* {category} */}

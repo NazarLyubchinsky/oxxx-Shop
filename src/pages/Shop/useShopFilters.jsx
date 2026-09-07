@@ -28,6 +28,7 @@ const [sortOrder, setSortOrder] = useState(() => {
     }
     return !initialNewOnly;
   });
+  const [showPzOnly, setShowPzOnly] = useState(() => searchParams.get('supplier') === 'filled');
 
   const etFromParam = searchParams.get('etFrom') || ''
   const etToParam = searchParams.get('etTo') || ''
@@ -39,6 +40,8 @@ const [sortOrder, setSortOrder] = useState(() => {
     setFilterEtFrom(etFromParam)
     setFilterEtTo(etToParam)
   }, [etFromParam, etToParam])
+
+ 
 
   const baseItems = filtered.length ? filtered : items
 
@@ -75,11 +78,16 @@ const [sortOrder, setSortOrder] = useState(() => {
     return filteredByDia.filter(item => !isNewItem(item));
   }, [filteredByDia, showNewOnly, showUsedItems]);
 
+  const filteredBySupplier = useMemo(() => {
+    if (!showPzOnly) return filteredByCondition;
+    return filteredByCondition.filter(item => String(item.supplier || '').trim().length > 0);
+  }, [filteredByCondition, showPzOnly]);
+
   const sortedItems = useMemo(() => {
-    return [...filteredByCondition].sort((a, b) => {
+    return [...filteredBySupplier].sort((a, b) => {
       return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
     });
-  }, [filteredByCondition, sortOrder]);
+  }, [filteredBySupplier, sortOrder]);
 
   const handleEtFromChange = e => {
     const val = e.target.value
@@ -186,6 +194,20 @@ const [sortOrder, setSortOrder] = useState(() => {
     applyProductFilters(showNewOnly, true);
   };
 
+  const togglePzOnly = () => {
+    const updated = !showPzOnly;
+    setShowPzOnly(updated);
+    const params = Object.fromEntries(searchParams.entries());
+
+    if (updated) {
+      params.supplier = 'filled';
+    } else {
+      delete params.supplier;
+    }
+
+    setSearchParams(params);
+  };
+
   const updateSortOrder = (value) => {
   setSortOrder(value);
   const params = Object.fromEntries(searchParams.entries());
@@ -213,6 +235,8 @@ const [sortOrder, setSortOrder] = useState(() => {
     toggleNewOnly,
     showUsedItems,
     toggleUsedItems,
+    showPzOnly,
+    togglePzOnly,
     filtered,
     setFiltered,
     sortedItems

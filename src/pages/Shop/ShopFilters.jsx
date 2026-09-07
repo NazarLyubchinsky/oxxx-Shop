@@ -17,6 +17,8 @@ const ShopFilters = ({
   toggleNewOnly,
   showUsedItems,
   toggleUsedItems,
+  showPzOnly,
+  togglePzOnly,
 }) => {
  
 
@@ -96,6 +98,14 @@ return (
         className={`shop-filters__button ${showUsedItems ? 'shop-filters__button_active' : ''}`}
       >
         {showUsedItems ? 'Вживані диски: увімкнено' : 'Вживані диски'}
+      </button>
+
+      <button
+        type="button"
+        onClick={togglePzOnly}
+        className={`shop-filters__button ${showPzOnly ? 'shop-filters__button_active' : ''}`}
+      >
+        {showPzOnly ? 'Диски П.З: увімкнено' : 'Диски П.З'}
       </button>
 
       <div className="shop-filters__block">

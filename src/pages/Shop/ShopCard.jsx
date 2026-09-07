@@ -15,14 +15,17 @@ import PriceBlock from '../../components/PriceBlock/PriceBlock';
 // import watermarkUrl from '../../assets/watermark.png'
 
 const ShopCard = memo(({ el }) => {
-  const { sys: { id }, title,  price, discount, imageCollection } = el;
+  const { sys: { id }, title, supplier, price, discount, imageCollection } = el;
   const image = imageCollection?.items || [];
+  const supplierValue = String(supplier || '').trim();
+  const supplierPrefix = supplierValue.slice(0, 1) + supplierValue.slice(2, 3);
  
   // Видаляємо "dia", "DIA", "d", "D" з номерами (напр. dia57.1, DIA 66.6, D66.5, dia66,6, d66,6-57,1) з назви
   const cleanedTitle = title
     .replace(/(?:dia|DIA|d|D)\s*\d+(?:[.,]\d+)?(?:-\d+(?:[.,]\d+)?)?/gi, '') // цифри, можливий діапазон через -
     .replace(/,+/g, '') // видаляємо зайві коми, які могли залишитися
     .trim();
+  const displayTitle = supplierPrefix ? `${supplierPrefix} ${cleanedTitle}` : cleanedTitle;
   
   return (
     <li className="shop-list__item" key={id}>
@@ -39,7 +42,7 @@ const ShopCard = memo(({ el }) => {
     effect="blur"
     className="shop-list__item-image"
     src={image[0].url}
-    alt={cleanedTitle}
+    alt={displayTitle}
   />
 )}
 
@@ -49,7 +52,7 @@ const ShopCard = memo(({ el }) => {
       </div>
 
        <div className="shop-list__item-body">
-       <h1 className="shop-list__item-title">{cleanedTitle}</h1>
+      <h1 className="shop-list__item-title">{displayTitle}</h1>
 
 
 

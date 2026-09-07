@@ -81,6 +81,7 @@ export const shopItemCollectionQuery = `
         size
         pcd
         dia
+        supplier
         imageCollection {
           items {
             url
@@ -93,24 +94,24 @@ export const shopItemCollectionQuery = `
 `;
 
 export const shopItemQuery = (id) => `
-{
-	shopItem(id: "${id}") {
-    sys {
-      id
-    }
-	 price
-	 title
-	 
-		discount
-    size
-    pcd
-    dia
-    imageCollection {
-      items {
-        url
+    {
+      shopItem(id: "${id}") {
+        sys {
+          id
+        }
+        price
         title
+        discount
+        size
+        pcd
+        dia
+        supplier
+        imageCollection {
+          items {
+            url
+            title
+          }
+        }
       }
     }
-  }
-}
-`;
+  `;
