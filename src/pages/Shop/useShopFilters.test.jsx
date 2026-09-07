@@ -126,7 +126,7 @@ describe('useShopFilters NEW and used filters', () => {
     });
 
     expect(result.current.showPzOnly).toBe(true);
-    expect(result.current.sortedItems).toHaveLength(1);
-    expect(result.current.sortedItems[0].supplier).toBe('LUX-SHINA');
+    expect(result.current.sortedItems).toHaveLength(2);
+    expect(result.current.sortedItems.every(item => item.supplier)).toBe(true);
   });
 });

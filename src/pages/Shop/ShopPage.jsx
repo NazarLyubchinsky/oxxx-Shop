@@ -115,7 +115,7 @@ useEffect(() => {
 
 <div className="shop-block_content-panel_close" >
  <span className='close_text'> 
-    <img src="/images/icons8-фильтр-24.png" alt="опис" class="my-class" />
+    <img src="/images/icons8-фильтр-24.png" alt="опис" className="my-class" />
   Фільтр за параметрами</span>
 				<button onClick={toggleMenu}>
           	<Icon name="round-close" />

@@ -80,8 +80,8 @@ const [sortOrder, setSortOrder] = useState(() => {
 
   const filteredBySupplier = useMemo(() => {
     if (!showPzOnly) return filteredByCondition;
-    return filteredByCondition.filter(item => String(item.supplier || '').trim().length > 0);
-  }, [filteredByCondition, showPzOnly]);
+    return filteredByDia.filter(item => String(item.supplier || '').trim().length > 0);
+  }, [filteredByCondition, filteredByDia, showPzOnly]);
 
   const sortedItems = useMemo(() => {
     return [...filteredBySupplier].sort((a, b) => {

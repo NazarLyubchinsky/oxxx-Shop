@@ -9,7 +9,6 @@ function CartItem({ item }) {
 	// const { id, url, title, price, quantity = 0, discount, category, color, size } = item
 	const { id, url, title, price, quantity = 0, discount, color, size } = item
 
-	console.log(item)
 	return (
 		<div className="cartItem">
 			<Link to={`/shop/${id}`}>
