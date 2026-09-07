@@ -1,10 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useShopItems } from '../../hooks/useShopitems';
 import { getShopPrefix } from '../../utils/shopDetect';
 
-const ShopCategoryList = ({ filtered, setFiltered, selectedSize, selectedPCD, setIsFilterOpenBurger }) => {
-  const { items = [] } = useShopItems();
+const ShopCategoryList = ({ items = [], filtered, setFiltered, selectedSize, selectedPCD, setIsFilterOpenBurger }) => {
   const navigate = useNavigate();
 
   const sizes = useMemo(() => {

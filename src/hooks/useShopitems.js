@@ -10,7 +10,7 @@ export const useShopItems = () => {
 
 useEffect(() => {
   const now = Date.now();
-  const cacheDuration = 1000 * 60 * 60 * 3; // 3 години
+  const cacheDuration = 1000 * 60 * 60 * 24; // 24 години
   // const cacheDuration = 1000 * 60 * 1; // 1хв 
   const isCacheValid = lastFetch && (now - lastFetch < cacheDuration);
 

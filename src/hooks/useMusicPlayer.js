@@ -1,32 +1,32 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 
 
-export const useMusicPlayer = () => {
-	const [audio] = useState(new Audio())
-	const [playing, setPlaying] = useState(false)
-	const [currentTrack, setCurrentTrack] = useState(null)
+// export const useMusicPlayer = () => {
+// 	const [audio] = useState(new Audio())
+// 	const [playing, setPlaying] = useState(false)
+// 	const [currentTrack, setCurrentTrack] = useState(null)
 
 
-	const handleTrackClick = (track) => {
-		setPlaying((prev) => {
-			const isPlaying = track.sys.id === currentTrack?.sys?.id ? !prev : true;
+// 	const handleTrackClick = (track) => {
+// 		setPlaying((prev) => {
+// 			const isPlaying = track.sys.id === currentTrack?.sys?.id ? !prev : true;
 
-			audio.src = track.link.url;
-			!isPlaying ? audio.pause() : audio.play();
+// 			audio.src = track.link.url;
+// 			!isPlaying ? audio.pause() : audio.play();
 
-			return isPlaying;
-		});
+// 			return isPlaying;
+// 		});
 
-		setCurrentTrack(track);
-	};
+// 		setCurrentTrack(track);
+// 	};
 
-	useEffect(() => {
-		return () => {
-			audio.pause()
-		};
-	}, [audio])
+// 	useEffect(() => {
+// 		return () => {
+// 			audio.pause()
+// 		};
+// 	}, [audio])
 
 
-	return { playing, handleTrackClick, currentTrack }
-}
+// 	return { playing, handleTrackClick, currentTrack }
+// }

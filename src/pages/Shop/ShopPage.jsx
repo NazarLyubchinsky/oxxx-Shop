@@ -98,6 +98,7 @@ useEffect(() => {
 
            <div className='shop-block_content'>
              <ShopCategoryList
+              items={items}
               filtered={filtered}
               setFiltered={setFiltered}
               selectedSize={paramSize}

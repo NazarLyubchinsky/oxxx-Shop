@@ -1,4 +1,5 @@
 import React, { Suspense, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import '../../styles/index.scss'
 
 
@@ -8,12 +9,11 @@ import Header from '../Header/Header'
 import AppRoutes from './AppRoutes'
 import Preloader from '../Preloader/Preloader'
 import { useLocation } from 'react-router-dom'
-import { useShopItems } from '../../hooks/useShopitems'
 import disksData from '../../utils/disks_all.json'
 
 const App = () => {
 	const location = useLocation()
-	const { items: shopItems } = useShopItems()
+	const shopItems = useSelector(({ shop }) => shop.items)
 
 	// Нормалізація назви для порівняння по повній назві `name`
 	const normalizeDiskName = (name) => {

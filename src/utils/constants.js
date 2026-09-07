@@ -1,18 +1,18 @@
 export const MAIN_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}`;
 
 export const MENU = [
-	{
-		name: "Шини ЛІТО",
-		link: "tour",
-	},
+	// {
+	// 	name: "Шини ЛІТО",
+	// 	link: "tour",
+	// },
 	// {
 	// 	name: "Creativity",
 	// 	link: "tracks",
 	// }, 
-	{
-		name: "Шини ЗИМА",
-		link: "news",
-	},
+	// {
+	// 	name: "Шини ЗИМА",
+	// 	link: "news",
+	// },
 	{
 		name: "Каталог дисків",
 		link: "shop",
