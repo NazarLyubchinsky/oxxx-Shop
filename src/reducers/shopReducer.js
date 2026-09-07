@@ -25,7 +25,7 @@ export const getShopsItems = createAsyncThunk(
       const allItems = await fetchAllShopItems();
       return allItems;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err);
+			return thunkAPI.rejectWithValue(err.message);
     }
   }
 );
@@ -64,7 +64,7 @@ const shopItemSlice = createSlice({
   state.isFetching = false;
 })
 		.addCase(getShopsItems.rejected, (state, action) => {
-  console.log("getShopsItems rejected", action.error);
+	console.log("getShopsItems rejected", action.payload || action.error.message);
   state.isLoading = false;
   state.isFetching = false;
 })

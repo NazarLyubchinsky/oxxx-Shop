@@ -8,22 +8,24 @@ import { MAIN_URL } from "./constants"
 
 // feth request query
 export const request = async (query, variables = {}) => {
-  try {
-    const result = await fetch(MAIN_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
-      },
-      body: JSON.stringify({ query, variables }),
-    });
+	const result = await fetch(MAIN_URL, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+		},
+		body: JSON.stringify({ query, variables }),
+	});
 
-    const { data } = await result.json();
+	const payload = await result.json();
 
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
+	if (!result.ok || payload.errors?.length) {
+		const message = payload.errors?.map(({ message }) => message).join("; ")
+			|| `Contentful request failed with status ${result.status}`;
+		throw new Error(message);
+	}
+
+	return payload.data;
 };
 
 export const sortByDate = (arr) => {

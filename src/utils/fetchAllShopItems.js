@@ -1,7 +1,7 @@
 import { request } from "../utils/common";
 import { shopItemCollectionQuery } from "../utils/queries";
 
-const LIMIT = 800;
+const LIMIT = 100;
 
 export const fetchAllShopItems = async () => {
   let allItems = [];

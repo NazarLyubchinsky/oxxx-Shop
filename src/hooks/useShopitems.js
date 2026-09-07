@@ -19,6 +19,15 @@ useEffect(() => {
   }
 }, [dispatch, items.length, lastFetch, isFetching]);
 
+useEffect(() => {
+  if (items.length) {
+    console.table(items.map(({ sys, title, supplier }) => ({
+      id: sys?.id,
+      title,
+      supplier,
+    })));
+  }
+}, [items]);
 
   return { items, isLoading };
 };
