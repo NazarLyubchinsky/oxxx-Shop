@@ -112,7 +112,7 @@ describe('useShopFilters NEW and used filters', () => {
     expect(result.current.sortedItems).toHaveLength(2);
   });
 
-  it('filters products with a filled supplier value', () => {
+  it('filters products with a filled supplier value as warehouse 2', () => {
     const wrapper = ({ children }) => (
       <MemoryRouter initialEntries={['/shop']}>
         {children}
@@ -122,11 +122,29 @@ describe('useShopFilters NEW and used filters', () => {
     const { result } = renderHook(() => useShopFilters(items), { wrapper });
 
     act(() => {
-      result.current.togglePzOnly();
+      result.current.setWarehouse('filled');
     });
 
-    expect(result.current.showPzOnly).toBe(true);
-    expect(result.current.sortedItems).toHaveLength(2);
+    expect(result.current.warehouseFilter).toBe('filled');
+    expect(result.current.sortedItems).toHaveLength(1);
     expect(result.current.sortedItems.every(item => item.supplier)).toBe(true);
+  });
+
+  it('filters products with an empty supplier value as warehouse 1', () => {
+    const wrapper = ({ children }) => (
+      <MemoryRouter initialEntries={['/shop']}>
+        {children}
+      </MemoryRouter>
+    );
+
+    const { result } = renderHook(() => useShopFilters(items), { wrapper });
+
+    act(() => {
+      result.current.setWarehouse('empty');
+    });
+
+    expect(result.current.warehouseFilter).toBe('empty');
+    expect(result.current.sortedItems).toHaveLength(1);
+    expect(result.current.sortedItems[0].supplier).toBeNull();
   });
 });

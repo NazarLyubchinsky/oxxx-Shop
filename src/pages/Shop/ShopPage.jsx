@@ -42,8 +42,8 @@ const toggleMenu = () => {
     toggleNewOnly,
     showUsedItems,
     toggleUsedItems,
-    showPzOnly,
-    togglePzOnly,
+    warehouseFilter,
+    setWarehouse,
     filtered,
     setFiltered,
     sortedItems
@@ -91,8 +91,8 @@ useEffect(() => {
               toggleNewOnly={toggleNewOnly}
               showUsedItems={showUsedItems}
               toggleUsedItems={toggleUsedItems}
-              showPzOnly={showPzOnly}
-              togglePzOnly={togglePzOnly}
+              warehouseFilter={warehouseFilter}
+              setWarehouse={setWarehouse}
             />
   
 
@@ -140,8 +140,8 @@ useEffect(() => {
               toggleNewOnly={toggleNewOnly}
               showUsedItems={showUsedItems}
               toggleUsedItems={toggleUsedItems}
-              showPzOnly={showPzOnly}
-              togglePzOnly={togglePzOnly}
+              warehouseFilter={warehouseFilter}
+              setWarehouse={setWarehouse}
             />
               </div>
                </div>

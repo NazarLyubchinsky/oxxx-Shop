@@ -17,8 +17,8 @@ const ShopFilters = ({
   toggleNewOnly,
   showUsedItems,
   toggleUsedItems,
-  showPzOnly,
-  togglePzOnly,
+  warehouseFilter,
+  setWarehouse,
 }) => {
  
 
@@ -100,13 +100,23 @@ return (
         {showUsedItems ? 'Вживані диски: увімкнено' : 'Вживані диски'}
       </button>
 
-      <button
-        type="button"
-        onClick={togglePzOnly}
-        className={`shop-filters__button ${showPzOnly ? 'shop-filters__button_active' : ''}`}
-      >
-        {showPzOnly ? 'Диски П.З: увімкнено' : 'Диски П.З'}
-      </button>
+      <div className="shop-filters__warehouse">
+        <span className="shop-filters__label">Склад:</span>
+        <button
+          type="button"
+          onClick={() => setWarehouse('empty')}
+          className={`shop-filters__warehouse-button ${warehouseFilter === 'empty' ? 'shop-filters__warehouse-button_active' : ''}`}
+        >
+          Склад 1
+        </button>
+        <button
+          type="button"
+          onClick={() => setWarehouse('filled')}
+          className={`shop-filters__warehouse-button ${warehouseFilter === 'filled' ? 'shop-filters__warehouse-button_active' : ''}`}
+        >
+          Склад 2
+        </button>
+      </div>
 
       <div className="shop-filters__block">
         <label className="shop-filters__label">DIA (ступиця):</label>

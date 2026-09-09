@@ -28,7 +28,10 @@ const [sortOrder, setSortOrder] = useState(() => {
     }
     return !initialNewOnly;
   });
-  const [showPzOnly, setShowPzOnly] = useState(() => searchParams.get('supplier') === 'filled');
+  const [warehouseFilter, setWarehouseFilter] = useState(() => {
+    const supplierParam = searchParams.get('supplier');
+    return supplierParam === 'filled' || supplierParam === 'empty' ? supplierParam : 'all';
+  });
 
   const etFromParam = searchParams.get('etFrom') || ''
   const etToParam = searchParams.get('etTo') || ''
@@ -79,9 +82,16 @@ const [sortOrder, setSortOrder] = useState(() => {
   }, [filteredByDia, showNewOnly, showUsedItems]);
 
   const filteredBySupplier = useMemo(() => {
-    if (!showPzOnly) return filteredByCondition;
-    return filteredByDia.filter(item => String(item.supplier || '').trim().length > 0);
-  }, [filteredByCondition, filteredByDia, showPzOnly]);
+    if (warehouseFilter === 'filled') {
+      return filteredByCondition.filter(item => String(item.supplier || '').trim().length > 0);
+    }
+
+    if (warehouseFilter === 'empty') {
+      return filteredByCondition.filter(item => String(item.supplier || '').trim().length === 0);
+    }
+
+    return filteredByCondition;
+  }, [filteredByCondition, warehouseFilter]);
 
   const sortedItems = useMemo(() => {
     return [...filteredBySupplier].sort((a, b) => {
@@ -194,15 +204,15 @@ const [sortOrder, setSortOrder] = useState(() => {
     applyProductFilters(showNewOnly, true);
   };
 
-  const togglePzOnly = () => {
-    const updated = !showPzOnly;
-    setShowPzOnly(updated);
+  const setWarehouse = (value) => {
+    const updated = warehouseFilter === value ? 'all' : value;
+    setWarehouseFilter(updated);
     const params = Object.fromEntries(searchParams.entries());
 
-    if (updated) {
-      params.supplier = 'filled';
-    } else {
+    if (updated === 'all') {
       delete params.supplier;
+    } else {
+      params.supplier = updated;
     }
 
     setSearchParams(params);
@@ -235,8 +245,8 @@ const [sortOrder, setSortOrder] = useState(() => {
     toggleNewOnly,
     showUsedItems,
     toggleUsedItems,
-    showPzOnly,
-    togglePzOnly,
+    warehouseFilter,
+    setWarehouse,
     filtered,
     setFiltered,
     sortedItems
