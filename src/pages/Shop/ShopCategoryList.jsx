@@ -4,9 +4,14 @@ import { getShopPrefix } from '../../utils/shopDetect';
 
 const ShopCategoryList = ({ items = [], filtered, setFiltered, selectedSize, selectedPCD, setIsFilterOpenBurger }) => {
   const navigate = useNavigate();
+  const normalizeSize = (size) => {
+    const value = String(size || '').trim().toUpperCase();
+    const number = value.replace(/^R/, '');
+    return number ? `R${number}` : '';
+  };
 
   const sizes = useMemo(() => {
-    const unique = [...new Set(items.map(item => item.size).filter(Boolean))];
+    const unique = [...new Set(items.map(item => normalizeSize(item.size)).filter(Boolean))];
     // sort by numeric portion (e.g. R14, R16)
     unique.sort((a, b) => {
       const na = parseInt(a.replace(/[^\d]/g, ''), 10);
@@ -18,7 +23,7 @@ const ShopCategoryList = ({ items = [], filtered, setFiltered, selectedSize, sel
 
   const pcds = useMemo(() => {
     if (!selectedSize) return [];
-    const filteredItems = items.filter(item => item.size === selectedSize);
+    const filteredItems = items.filter(item => normalizeSize(item.size) === normalizeSize(selectedSize));
     const uniq = [...new Set(filteredItems.map(item => item.pcd).filter(Boolean))];
     // sort PCD values numerically if they contain digits
     uniq.sort((a, b) => {
@@ -36,7 +41,7 @@ const ShopCategoryList = ({ items = [], filtered, setFiltered, selectedSize, sel
     let result = items;
 
     if (selectedSize) {
-      result = result.filter(item => item.size === selectedSize);
+      result = result.filter(item => normalizeSize(item.size) === normalizeSize(selectedSize));
     }
 
     if (selectedPCD) {

@@ -2,7 +2,7 @@ import PriceBlock from '../PriceBlock/PriceBlock'
 
 const ProductTitle = ({ product }) => {
 	// const { title, category, discount, price } = product
-	const { title, supplier, discount, price } = product
+	const { title, supplier, discount, price, d4 } = product
 	const supplierValue = String(supplier || '').trim()
 	const supplierPrefix = supplierValue.slice(0, 1) + supplierValue.slice(2, 3)
 	const displayTitle = supplierPrefix ? `${supplierPrefix} ${title}` : title
@@ -35,7 +35,7 @@ const ProductTitle = ({ product }) => {
 					</div>
 				)
 			} */}
-			<PriceBlock price={price} discount={discount}/>
+			<PriceBlock price={price} discount={discount} d4={d4}/>
 		</>
 	)
 }

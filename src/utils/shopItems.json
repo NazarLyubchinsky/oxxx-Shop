@@ -3,7 +3,7 @@
     "sys": {
       "id": "xls-34110-1"
     },
-        "title": "R13*5.5J 4*98 ET25 DIA 58.6 34110",
+    "title": "R13*5.5J 4*98 ET25 DIA 58.6 34110",
     "discount": null,
     "size": "R13",
     "pcd": "4x98",
@@ -18,8 +18,8 @@
     "imageCollection": {
       "items": [
         {
-          "url": "/images/imagesShopItems/vlsieh3g091fb8nykjwp2mudihc7xz37.png",
-          "title": "Фото диска 34111"
+          "url": "/images/imagesShopItems/34110.png",
+          "title": "ото диска 34110"
         }
       ]
     }
@@ -41,7 +41,12 @@
     "d4": 57.31,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/34111.png",
+          "title": "ото диска 34111"
+        }
+      ]
     }
   },
   {
@@ -61,7 +66,12 @@
     "d4": 57.31,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/34116.png",
+          "title": "ото диска 34116"
+        }
+      ]
     }
   },
   {
@@ -81,7 +91,12 @@
     "d4": 59.12,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/341208.png",
+          "title": "ото диска 341208"
+        }
+      ]
     }
   },
   {
@@ -101,7 +116,12 @@
     "d4": 57.31,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/341240.png",
+          "title": "ото диска 341240"
+        }
+      ]
     }
   },
   {
@@ -121,7 +141,12 @@
     "d4": 57.31,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/341219.png",
+          "title": "ото диска 341219"
+        }
+      ]
     }
   },
   {
@@ -141,7 +166,12 @@
     "d4": 59.12,
     "holeType": "Конус",
     "imageCollection": {
-      "items": []
+      "items": [
+        {
+          "url": "/images/imagesShopItems/34105.png",
+          "title": "ото диска 34105"
+        }
+      ]
     }
   },
   {
@@ -163,8 +193,8 @@
     "imageCollection": {
       "items": [
         {
-          "url": "https://zw.ua/upload/iblock/36b/a6eg0pfwszqit6gw8g3evfm0gaiuzojd.png",
-          "title": "Фото диска 34608"
+          "url": "/images/imagesShopItems/34608.png",
+          "title": "ото диска 34608"
         }
       ]
     }

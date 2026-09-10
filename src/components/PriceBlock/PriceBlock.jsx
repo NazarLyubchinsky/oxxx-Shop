@@ -1,14 +1,16 @@
 import React from 'react';
-import { euro } from '../../utils/euro';
+import { dolar, euro } from '../../utils/currency';
 
-const PriceBlock = ({ price, discount }) => {
-  const fullPrice = Math.ceil((price * euro) / 4).toLocaleString('uk-UA') + ' грн./шт';
+const PriceBlock = ({ price, discount, d4 }) => {
+  const isLocalPrice = d4 !== undefined && d4 !== null;
+  const fullPrice = isLocalPrice
+    ? Math.ceil(d4 * dolar  * 1.2).toLocaleString('uk-UA') + ' грн./шт'
+    : Math.ceil((price * euro) / 4).toLocaleString('uk-UA') + ' грн./шт';
 
   if (!discount) {
     return <span className="shop-list__item-price">{fullPrice}</span>;
   }
 
-  // `discount` is now the final price in USD (not percent). Convert using rate 47.
   const discountedPrice = Math.ceil((discount * euro) / 4).toLocaleString('uk-UA') + ' грн./шт';
 
   return (

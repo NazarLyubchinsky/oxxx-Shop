@@ -4,7 +4,6 @@ import React, { memo } from 'react'
 import { Link } from 'react-router-dom';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import PriceBlock from '../../components/PriceBlock/PriceBlock';
 
@@ -15,7 +14,7 @@ import PriceBlock from '../../components/PriceBlock/PriceBlock';
 // import watermarkUrl from '../../assets/watermark.png'
 
 const ShopCard = memo(({ el }) => {
-  const { sys: { id }, title, supplier, price, discount, imageCollection } = el;
+  const { sys: { id }, title, supplier, price, discount, d4, imageCollection } = el;
   const image = imageCollection?.items || [];
   const supplierValue = String(supplier || '').trim();
   const supplierPrefix = supplierValue.slice(0, 1) + supplierValue.slice(2, 3);
@@ -33,21 +32,23 @@ const ShopCard = memo(({ el }) => {
 
       <div className="shop-list__item-image">
       <Link to={`/shop/product/${id}`} state={{ item: el }}>
-        <div
-        >
+        {/* <div
+        > */}
          
 
          {image[0] && (
   <LazyLoadImage
-    effect="blur"
     className="shop-list__item-image"
     src={image[0].url}
     alt={displayTitle}
+    wrapperProps={{
+    style: { display: "block", width: "100%" }
+  }}
   />
 )}
 
               <div className="shop-list__item-preview" style={{ color:'black'}}>Швидкий перегляд</div>
-        </div>
+        {/* </div> */}
       </Link>
       </div>
 
@@ -55,8 +56,9 @@ const ShopCard = memo(({ el }) => {
       <h1 className="shop-list__item-title">{displayTitle}</h1>
 
 
-
-<PriceBlock price={price} discount={discount}/>
+      <div className="shop-list__item-price-block">
+        <PriceBlock price={price} discount={discount} d4={d4}/>
+      </div>
        </div>
     </li>
   )

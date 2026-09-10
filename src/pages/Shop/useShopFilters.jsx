@@ -78,6 +78,10 @@ const [sortOrder, setSortOrder] = useState(() => {
       return filteredByDia.filter(item => isNewItem(item));
     }
 
+    if (!showUsedItems) {
+      return filteredByDia;
+    }
+
     return filteredByDia.filter(item => !isNewItem(item));
   }, [filteredByDia, showNewOnly, showUsedItems]);
 
@@ -95,7 +99,9 @@ const [sortOrder, setSortOrder] = useState(() => {
 
   const sortedItems = useMemo(() => {
     return [...filteredBySupplier].sort((a, b) => {
-      return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
+      const priceA = a.d4 ?? a.price ?? 0;
+      const priceB = b.d4 ?? b.price ?? 0;
+      return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
     });
   }, [filteredBySupplier, sortOrder]);
 

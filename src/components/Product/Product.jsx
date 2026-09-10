@@ -65,6 +65,7 @@ import { getShopItem } from '../../reducers/shopReducer'
 import Preloader from '../Preloader/Preloader'
 import ProductSlide from './ProductSlide'
 import ProductTitle from './ProductTitle'
+import localShopItems from '../../utils/shopItems.json'
 
 const Product = () => {
 	  const { id } = useParams();
@@ -80,7 +81,7 @@ const Product = () => {
     if (location.state?.item) {
       dispatch({ type: 'shopItem/setItemFromList', payload: location.state.item });
     } else {
-      const found = items.find(el => el.sys.id === id);
+	const found = items.find(el => el.sys.id === id) || localShopItems.find(el => el.sys.id === id);
       if (found) {
         dispatch({ type: 'shopItem/setItemFromList', payload: found });
       } else {
